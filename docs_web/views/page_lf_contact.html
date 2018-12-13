@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title><%= title %></title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- DataTables CSS -->
+    <link href="/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="">TMSR Documents v2.0</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-tasks">
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong>LF1 堆物理</strong>
+                                        <span class="pull-right text-muted">100% Complete</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                            <span class="sr-only">100% Complete (success)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong>安全分析</strong>
+                                        <span class="pull-right text-muted">20% Complete</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                                            <span class="sr-only">20% Complete</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong>堆本体</strong>
+                                        <span class="pull-right text-muted">60% Complete</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                            <span class="sr-only">60% Complete (warning)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong>熔盐回路</strong>
+                                        <span class="pull-right text-muted">80% Complete</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                                            <span class="sr-only">80% Complete (danger)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a class="text-center" href="#">
+                                <strong>See All Tasks</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-tasks -->
+                </li>
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-alerts">
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-comment fa-fw"></i> New Comment
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                    <span class="pull-right text-muted small">12 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-envelope fa-fw"></i> Message Sent
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-tasks fa-fw"></i> New Task
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a class="text-center" href="#">
+                                <strong>See All Alerts</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-alerts -->
+                </li>
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                        <li>
+                            <a href="/"><i class="fa fa-dashboard fa-fw"></i>LF1 文件管理</a>
+                        </li>
+                        <li>
+                            <a href=" /lfcontact">
+                                <i class="fa fa-edit fa-fw"></i>工作联系单</a>
+                        </li>
+                        <li>
+                            <a href="/lf1_note">
+                                <i class="fa fa-edit fa-fw"></i>技术通知单</a>
+                        </li>
+                        <li>
+                            <a href="/lf1_concept_design"><i class="fa fa-bar-chart-o fa-fw"></i>概念设计文件</a>
+                   
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="/lf1_scheme_design">
+                                <i class="fa fa-bar-chart-o fa-fw"></i>方案设计文件</a>
+                        
+                            <!-- /.nav-second-level -->
+                        </li>
+
+                        <li>
+                            <a href="lf1_primary"><i class="fa fa-wrench fa-fw"></i>初步设计文件<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li ng-repeat="x in systems">
+                                        <a href="/proto/{{x}}">{{x}}</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-wrench fa-fw"></i>施工图设计文件
+                                <span class="fa arrow"></span>
+                            </a>
+                            <ul class="nav nav-second-level">
+                                <li ng-repeat="x in systems">
+                                    <a href="/const/{{x}}">{{x}}</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">联系单:&nbsp;<%= title %></h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-clock-o fa-fw"></i>联系单进程
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <ul class="timeline">
+                                <li ng-repeat="x in request">
+                                    <div class="timeline-badge success">
+                                        <i class="fa fa-search"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading ">
+                                            <h4 class="timeline-title">{{x.subject}}</h4>
+                                            <p>
+                                                <small class="text-muted">
+                                                    <i class="fa fa-clock-o"></i>&nbsp{{x.re_sign_date|limitTo:10}}</small>
+                                                <br>
+                                                <small class="text-muted">发起:&nbsp{{x.contact_from}} &nbsp&nbsp&nbsp&nbsp&nbsp 发往:&nbsp;{{x.contact_to}} </small>
+                                                
+                                            </p>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>{{x.note}}</p>
+                                            <hr>
+                                            <div class="btn-group">
+                                                <a type="button" class="btn btn-block btn-social btn-dropbox" href="{{x.file_addr}}">
+                                                    <i class="fa fa-paperclip"></i>&nbsp附件&nbsp{{x.filename.slice(15,45)}}{{x.filename.length>30?'...':''}}
+                                                </a>
+                                            </div>
+                                         </div>
+
+                                    </div>
+                                </li>
+                                <li class="timeline-inverted" ng-repeat="x in reply">
+                                    <div class="timeline-badge warning">
+                                        <i class="fa fa-credit-card"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">{{x.subject}}</h4>
+                                            <p>
+                                                <small class="text-muted">
+                                                    <i class="fa fa-clock-o"></i>&nbsp{{x.reply_date.slice(0,10)}}</small>
+                                                <br>
+                                                <small class="text-muted">回复:&nbsp{{x.reply_from}} </small>
+                                            </p>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>{{x.note}}</p>
+                                        </div>
+                                        <hr>
+                                        <div class="btn-group">
+                                                <a type="button" class="btn btn-block btn-social btn-dropbox" href="{{x.file_addr}}">
+                                                    <i class="fa fa-paperclip"></i>&nbsp附件&nbsp {{x.filename.slice(15,45)}}{{x.filename.length>30?'...':''}}
+                                                </a>
+                                        </div>
+                                    </div>
+                                </li>
+                    
+
+                            </ul>
+
+                            <hr>
+                    
+                    
+                            <div class="col-lg-6 ">
+                                
+                                    <a class="btn btn-outline btn-primary btn-lg btn-block" target="_blank" href="/add_new_subject/<%= title %>">补充联系单</a>
+                                
+                            </div>
+                            <div class="col-lg-6 ">
+                               
+                                    <a class="btn btn-outline btn-primary btn-lg btn-block" target="_blank" href="/reply/add_reply/<%= title %>">回复联系单</a>
+                               
+                            </div>
+                        </div>
+                        <!-- /.panel-body -->
+ 
+                     </div><!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="/vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- DataTables JavaScript -->
+    <script src="/vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="/vendor/datatables-responsive/dataTables.responsive.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="/dist/js/sb-admin-2.js"></script>
+    <script src="/js/angular.min.js"></script>   
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+        var app = angular.module('myApp', []);
+            app.controller('myCtrl', function ($scope, $http) {
+                var myUrl = "http://10.10.2.29:3000/data/lf1?callback=JSON_CALLBACK";
+                
+                $http.jsonp(myUrl).success(function (response) {
+
+                    var i = 0;
+                    systems = [];
+                    count = [];
+                    submmitted = [];
+                    authorized = [];
+                    file_sum = 0;
+                    file_sub = 0;
+                    response.forEach(function (key) {
+
+                        systems[i] = key.systems;
+                        count[i] = key.count;
+                        submmitted[i] = key.submmitted;
+                        authorized[i] = key.authorized;
+                        i++;
+                        file_sum = file_sum + parseInt(key.count ? key.count : 0);
+                        file_sub = file_sub + parseInt(key.submmitted ? key.submmitted : 0);
+
+                    });
+                    $scope.systems = systems;
+                    $scope.authorized = authorized;
+                    $scope.submmitted = submmitted;
+                    $scope.count = count;
+                    $scope.total_num = file_sum;
+                    $scope.total_sub = file_sub;
+                })
+                
+                
+
+                var title = $(document).attr("title");
+                var myUrl2 = 'http://10.10.2.29:3000/data/lf_contact_req/' + title + '?callback=JSON_CALLBACK'
+                $http.jsonp(myUrl2).success(function (response) {
+                    // var i = 0;
+                    // subjects = [];
+                    // contact_from =[];
+                    // contact_to =[]
+                    // sign_date =[];
+                    // note=[];
+                    // file_path=[];
+                    // response.forEach(function (key) {
+                    //     subjects[i]=key.subject;
+                    //     contact_from[i]=key.contact_from;
+                    //     contact_to[i]=key.contact_to
+                    //     sign_date[i]=key.resign_dat;
+                    //     note[i]=key.note;
+                    //     file_path[i]=key.file_addr;
+                    // });
+                    // $scope.subject=subjects;
+                    // $scope.contact_from=contact_from;
+                    // $scope.contact_to=contact_to;
+                    // $scope.sign_date=sign_date;
+                    // $scope.file_path=file_path;
+                    // $scope.note=note;
+                    $scope.request=response;
+
+                });
+           
+                var myUrl2 = 'http://10.10.2.29:3000/data/lf_contact_reply/' + title + '?callback=JSON_CALLBACK'
+                $http.jsonp(myUrl2).success(function (response) {
+                    // var i = 0;
+                    // subjects = [];
+                    // contact_from =[];
+                    // contact_to =[]
+                    // sign_date =[];
+                    // note=[];
+                    // file_path=[];
+                    // response.forEach(function (key) {
+                    //     subjects[i]=key.subject;
+                    //     contact_from[i]=key.contact_from;
+                    //     contact_to[i]=key.contact_to
+                    //     sign_date[i]=key.resign_dat;
+                    //     note[i]=key.note;
+                    //     file_path[i]=key.file_addr;
+                    // });
+                    // $scope.subject=subjects;
+                    // $scope.contact_from=contact_from;
+                    // $scope.contact_to=contact_to;
+                    // $scope.sign_date=sign_date;
+                    // $scope.file_path=file_path;
+                    // $scope.note=note;
+                    $scope.reply = response;
+
+                });
+                           
+           
+           });
+
+    </script>
+
+</body>
+
+</html>

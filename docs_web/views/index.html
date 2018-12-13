@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>TMSR Documents - 熔盐泵实验平台文档管理系统</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <link href="/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="/vendor/morrisjs/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+  
+
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="">TMSR Documents v2.0</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-tasks">
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong>LF1 堆物理</strong>
+                                        <span class="pull-right text-muted">100% Complete</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                            <span class="sr-only">100% Complete (success)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong>安全分析</strong>
+                                        <span class="pull-right text-muted">20% Complete</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                                            <span class="sr-only">20% Complete</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong>堆本体</strong>
+                                        <span class="pull-right text-muted">60% Complete</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                            <span class="sr-only">60% Complete (warning)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong>熔盐回路</strong>
+                                        <span class="pull-right text-muted">80% Complete</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                                            <span class="sr-only">80% Complete (danger)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a class="text-center" href="#">
+                                <strong>See All Tasks</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-tasks -->
+                </li>
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-alerts">
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-comment fa-fw"></i> New Comment
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                    <span class="pull-right text-muted small">12 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-envelope fa-fw"></i> Message Sent
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-tasks fa-fw"></i> New Task
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a class="text-center" href="#">
+                                <strong>See All Alerts</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-alerts -->
+                </li>
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                        <li>
+                            <a href="/"><i class="fa fa-dashboard fa-fw"></i>LF0 文件管理</a>
+                        </li>
+                        <li>
+                            <a href=" /lfcontact">
+                                <i class="fa fa-edit fa-fw"></i>工作联系单</a>
+                        </li>
+                        <li>
+                            <a href="/lf1_note">
+                                <i class="fa fa-edit fa-fw"></i>技术通知单</a>
+                        </li>
+                        <li>
+                            <a href="/lf1_concept_design"><i class="fa fa-bar-chart-o fa-fw"></i>概念设计文件</a>
+                   
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="/lf1_scheme_design">
+                                <i class="fa fa-bar-chart-o fa-fw"></i>方案设计文件</a>
+                        
+                            <!-- /.nav-second-level -->
+                        </li>
+
+                        <li>
+                            <a href="/lf1_primary"><i class="fa fa-wrench fa-fw"></i>初步设计文件<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li ng-repeat="x in systems">
+                                        <a href="/proto/{{x}}">{{x}}</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-wrench fa-fw"></i>施工图设计文件
+                                <span class="fa arrow"></span>
+                            </a>
+                            <ul class="nav nav-second-level">
+                                <li ng-repeat="x in systems">
+                                    <a href="/const/{{x}}">{{x}}</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">LF0 文件管理</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-bank fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">0</div>
+                                    <div> 方案设计</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-stack-overflow fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">{{total_sub}}/{{total_num}}</div>
+                                    <div>初步设计文件</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/lf1_primary">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-retweet fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">16</div>
+                                    <div>工作联系单</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/lfcontact">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-bullhorn  fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">4</div>
+                                    <div>技术通知单</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/lf1_note">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> 初步设计文件编写进度-按系统
+                            <div class="pull-right">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                        总数 {{total_num}}
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right" role="menu">
+                                            <li ng-repeat="x in systems"><a href="/proto/{{x}}">{{x}}</a></li>    
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div id="container" style="height:600px"> </div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> 设计输入文件列表
+                            <!-- <div class="pull-right">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                        Actions
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right" role="menu">
+                                        <li><a href="#">Action</a>
+                                        </li>
+                                        <li><a href="#">Another action</a>
+                                        </li>
+                                        <li><a href="#">Something else here</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li><a href="#">Separated link</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div> -->
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="table-responsive">
+                                        <table id="example" width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                            <thead>
+                                                <tr>
+                                                    <th>序号</th>
+                                                    <th>文件名称</th>
+                                                    <th data-sort="size">文件大小(MB)</th>
+                                                    <th data-sort="mtime">签发时间</th>
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <!-- <tbody>
+                                                <tr ng-repeat="x in input_file">
+                                                    <td>{{$index}}</td>
+                                                    <td><a href={{x.path}}>{{x.name}}</a></td>
+                                                    <td class="filesize">{{x.size}}&nbspMB</td>
+                                                    <td class="date">{{x.time}}</td>
+                                                </tr>
+                                                
+                                            </tbody> -->
+                                        </table>
+                                    </div>
+                                    <!-- /.table-responsive -->
+                                </div>
+                                <!-- /.col-lg-4 (nested) -->
+                                <!-- <div class="col-lg-8">
+                                    <div id="morris-bar-chart"></div>
+                                </div> -->
+                                <!-- /.col-lg-8 (nested) -->
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-clock-o fa-fw"></i> TMSR-LF0关键时间节点
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <ul class="timeline">
+                                <li>
+                                    <div class="timeline-badge success"><i class="fa fa-search"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading ">
+                                            <h4 class="timeline-title">初步设计，研究与验证</h4>
+                                            <p><small class="text-muted"><i class="fa fa-clock-o"></i>2018/05</small>
+                                            </p>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>包括堆本体系统、基建和辅助系统、熔盐和核燃料的可行性研究、初步设计、研究与验证。其中堆本体系统初步设计要求4月底完成，其它系统5月底完成初步设计。</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="timeline-inverted">
+                                    <div class="timeline-badge warning"><i class="fa fa-credit-card"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">施工图设计</h4>
+                                             <p>
+                                             <small class="text-muted">
+                                                <i class="fa fa-clock-o"></i>2018/09</small>
+                                            </p>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>包括堆本体系统、基建和辅助系统、熔盐和核燃料的施工图、研究与验证。全部施工图设计要求9月底完成。</p>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="timeline-badge info"><i class="fa fa-save"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">设备采购和加工</h4>
+                                            <p>
+                                                <small class="text-muted">
+                                                    <i class="fa fa-clock-o"></i>2019/5</small>
+                                            </p>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>基建和辅助系统完成土建施工，2019/05</p>
+                                            <hr>
+                                            <p>熔盐与核燃料完成设备采购,2019/05</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">设备采购和加工-堆本体</h4>
+                                            <p>
+                                                <small class="text-muted">
+                                                    <i class="fa fa-clock-o"></i>2019/10</small>
+                                            </p>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>堆本体完成设备采购与加工</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="timeline-inverted">
+                                    <div class="timeline-badge success"><i class="fa fa-graduation-cap"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">设备安装</h4>
+                                            <p>
+                                                <small class="text-muted">
+                                                    <i class="fa fa-clock-o"></i>2020/07</small>
+                                            </p>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>堆本体、基建与辅助系统完成设备安装与核前测试，熔盐与核燃料2020年7月底完成基盐制备，核燃料的许可证申请、LiF4到场和燃料盐制备</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="timeline-badge primary">
+                                        <i class="fa fa-flag-checkered"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">首次装料临界并达到2MW</h4>
+                                            <p>
+                                                <small class="text-muted">
+                                                    <i class="fa fa-clock-o"></i>2020/12</small>
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-8 -->
+                <div class="col-lg-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bell fa-fw"></i> Notifications Panel
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-comment fa-fw"></i> New Comment
+                                    <span class="pull-right text-muted small"><em>4 minutes ago</em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                    <span class="pull-right text-muted small"><em>12 minutes ago</em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-envelope fa-fw"></i> Message Sent
+                                    <span class="pull-right text-muted small"><em>27 minutes ago</em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-tasks fa-fw"></i> New Task
+                                    <span class="pull-right text-muted small"><em>43 minutes ago</em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                    <span class="pull-right text-muted small"><em>11:32 AM</em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-bolt fa-fw"></i> Server Crashed!
+                                    <span class="pull-right text-muted small"><em>11:13 AM</em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-warning fa-fw"></i> Server Not Responding
+                                    <span class="pull-right text-muted small"><em>10:57 AM</em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-shopping-cart fa-fw"></i> New Order Placed
+                                    <span class="pull-right text-muted small"><em>9:49 AM</em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-money fa-fw"></i> Payment Received
+                                    <span class="pull-right text-muted small"><em>Yesterday</em>
+                                    </span>
+                                </a>
+                            </div>
+                            <!-- /.list-group -->
+                            <a href="#" class="btn btn-default btn-block">View All Alerts</a>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Donut Chart Example
+                        </div>
+                        <div class="panel-body">
+                            <div id="morris-donut-chart"></div>
+                            <a href="#" class="btn btn-default btn-block">View Details</a>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                    <div class="chat-panel panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-comments fa-fw"></i> Chat
+                            <div class="btn-group pull-right">
+                                <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-chevron-down"></i>
+                                </button>
+                                <ul class="dropdown-menu slidedown">
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-refresh fa-fw"></i> Refresh
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-check-circle fa-fw"></i> Available
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-times fa-fw"></i> Busy
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-clock-o fa-fw"></i> Away
+                                        </a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-sign-out fa-fw"></i> Sign Out
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <ul class="chat">
+                                <li class="left clearfix">
+                                    <span class="chat-img pull-left">
+                                        <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle" />
+                                    </span>
+                                    <div class="chat-body clearfix">
+                                        <div class="header">
+                                            <strong class="primary-font">Jack Sparrow</strong>
+                                            <small class="pull-right text-muted">
+                                                <i class="fa fa-clock-o fa-fw"></i> 12 mins ago
+                                            </small>
+                                        </div>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="right clearfix">
+                                    <span class="chat-img pull-right">
+                                        <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle" />
+                                    </span>
+                                    <div class="chat-body clearfix">
+                                        <div class="header">
+                                            <small class=" text-muted">
+                                                <i class="fa fa-clock-o fa-fw"></i> 13 mins ago</small>
+                                            <strong class="pull-right primary-font">Bhaumik Patel</strong>
+                                        </div>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="left clearfix">
+                                    <span class="chat-img pull-left">
+                                        <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle" />
+                                    </span>
+                                    <div class="chat-body clearfix">
+                                        <div class="header">
+                                            <strong class="primary-font">Jack Sparrow</strong>
+                                            <small class="pull-right text-muted">
+                                                <i class="fa fa-clock-o fa-fw"></i> 14 mins ago</small>
+                                        </div>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="right clearfix">
+                                    <span class="chat-img pull-right">
+                                        <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle" />
+                                    </span>
+                                    <div class="chat-body clearfix">
+                                        <div class="header">
+                                            <small class=" text-muted">
+                                                <i class="fa fa-clock-o fa-fw"></i> 15 mins ago</small>
+                                            <strong class="pull-right primary-font">Bhaumik Patel</strong>
+                                        </div>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /.panel-body -->
+                        <div class="panel-footer">
+                            <div class="input-group">
+                                <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-warning btn-sm" id="btn-chat">
+                                        Send
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- /.panel-footer -->
+                    </div>
+                    <!-- /.panel .chat-panel -->
+                </div>
+                <!-- /.col-lg-4 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+      <!-- jQuery -->
+      <script src="/vendor/jquery/jquery.min.js"></script>
+
+      <!-- Bootstrap Core JavaScript -->
+      <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+  
+      <script src="/vendor/datatables/js/jquery.dataTables.min.js"></script>
+      <script src="/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+      <script src="/vendor/datatables-responsive/dataTables.responsive.js"></script>
+  
+      <!-- Metis Menu Plugin JavaScript -->
+      <script src="/vendor/metisMenu/metisMenu.min.js"></script>
+  
+      <!-- Morris Charts JavaScript -->
+      <script src="/vendor/raphael/raphael.min.js"></script>
+      <script src="/vendor/morrisjs/morris.min.js"></script>
+      <script src="/data/morris-data.js"></script>
+      <script src="/vendor/echarts.min.js"></script>
+      
+  
+  
+      <!-- Custom Theme JavaScript -->
+      <script src="/dist/js/sb-admin-2.js"></script>
+    
+  <script src="js/angular.min.js"></script> 
+  <script>
+              
+              
+      var app = angular.module('myApp', []);
+      app.controller('myCtrl', function($scope, $http) {   
+      var myUrl = "http://10.10.2.29:3000/data/lf1?callback=JSON_CALLBACK";
+      var myUrl_input = "http://10.10.2.29:3000/data/input_file?callback=JSON_CALLBACK";
+      $http.jsonp(myUrl_input).success(function(response){
+        // $scope.input_file=response;
+        var data = new Array();
+        var i=0;
+        response.forEach(function(responseE){
+        // console.log(response);
+            
+        data.push([i,responseE.name, responseE.size, responseE.time, responseE.path]);
+        i++;
+        })
+        $(document).ready(function () {
+              $('#example').DataTable({
+                  
+                  // "paging":   false,
+                  // "ordering": false,
+                  "info": true,
+                  "language": {
+                      "lengthMenu": "每页 _MENU_ 条记录",
+                      "zeroRecords": "没有找到记录",
+                      "info": "第 _PAGE_ 页 ( 总共 _PAGES_ 页 )",
+                      "infoEmpty": "无记录",
+                      "infoFiltered": "(从 _MAX_ 条记录过滤)",
+                      "search": "检索",
+
+                      "paginate": {
+                          "first": "第一页",
+                          "previous": "上一页",
+                          "next": "下一页",
+                          "last": "最后一页"
+                      }
+                  },
+
+                  "data": data,
+                  "columnDefs": [
+                      {
+                          // The `data` parameter refers to the data for the cell (defined by the
+                          // `data` option, which defaults to the column being worked with, in
+                          // this case `data: 0`.
+                          "render": function (data, type, row) {
+                              // return data +' ('+ row[3]+')';
+                              return '<a href="' + row[4] + '">' + data + '</a>';
+                          },
+                          "targets": 1
+                      },
+                      
+                      { "visible": false, "targets": [4] }
+                  ]
+
+              });
+          }); 
+      });
+      $http.jsonp(myUrl).success(function(response) {
+          
+          var i=0;
+          systems=[];
+          count=[];
+          submmitted=[];
+          authorized=[];
+          file_sum=0;
+          file_sub=0;
+          response.forEach(function(key){
+      
+           systems[i]=key.systems;
+           count[i]=key.count;
+           submmitted[i]=key.submmitted;
+           authorized[i]=key.authorized;
+           i++;
+           file_sum=file_sum+parseInt(key.count?key.count:0);
+           file_sub=file_sub+parseInt(key.submmitted?key.submmitted:0);
+           
+          });
+          $scope.systems = systems;
+          $scope.authorized=authorized;
+          $scope.submmitted=submmitted;
+          $scope.count=count;
+          $scope.total_num=file_sum;
+          $scope.total_sub=file_sub;
+
+
+          
+
+          // console.log("when");
+      //     console.log(response);
+      var dom = document.getElementById("container");
+ 
+ var myChart = echarts.init(dom);
+ var app = {};
+ option = null;
+ var posList = [
+'left', 'right', 'top', 'bottom',
+'inside',
+'insideTop', 'insideLeft', 'insideRight', 'insideBottom',
+'insideTopLeft', 'insideTopRight', 'insideBottomLeft', 'insideBottomRight'
+ ];
+
+ app.configParameters = {
+     rotate: {
+     min: -90,
+     max: 90
+     },
+align: {
+    options: {
+        left: 'left',
+        center: 'center',
+        right: 'right'
+    }
+},
+verticalAlign: {
+    options: {
+        top: 'top',
+        middle: 'middle',
+        bottom: 'bottom'
+    }
+},
+position: {
+    options: echarts.util.reduce(posList, function (map, pos) {
+        map[pos] = pos;
+        return map;
+    }, {})
+},
+distance: {
+    min: 0,
+    max: 100
+}
+};
+
+app.config = {
+rotate: 90,
+align: 'left',
+verticalAlign: 'middle',
+position: 'insideBottom',
+distance: 15,
+onChange: function () {
+    var labelOption = {
+        normal: {
+            rotate: app.config.rotate,
+            align: app.config.align,
+            verticalAlign: app.config.verticalAlign,
+            position: app.config.position,
+            distance: app.config.distance
+        }
+    };
+    myChart.setOption({
+        series: [{
+            label: labelOption
+        }, {
+            label: labelOption
+        }, {
+            label: labelOption
+        }, {
+            label: labelOption
+        }]
+    });
+}
+};
+
+
+var labelOption = {
+normal: {
+    show: true,
+    position: "insideTop",
+
+
+
+
+    formatter: '{c} ',
+    fontSize: 16,
+    rich: {
+        name: {
+            textBorderColor: '#fff'
+        }
+    }
+}
+};
+
+option = {
+color: ['#2677b5','#4da74b', '#a8b4bd' ],
+tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+        type: 'shadow'
+    }
+},
+legend: {
+    data: ['文档总数', '已提交', '已批准']
+},
+toolbox: {
+    show: false,
+    orient: 'vertical',
+    left: 'right',
+    top: 'center',
+    feature: {
+        mark: {show: true},
+        dataView: {show: true, readOnly: false},
+        magicType: {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+        restore: {show: true},
+        saveAsImage: {show: true}
+    }
+},
+calculable: true,
+xAxis: [
+    {
+        type: 'category',
+        zlevel:3,
+        axisTick: {show: true},
+        axisLabel: {interval: 0,rotate:25},
+        
+        data: systems
+    }
+],
+yAxis: [
+    {
+        type: 'value',
+        zlevel:3
+    }
+],
+series: [
+    {
+        name: '文档总数',
+        type: 'bar',
+
+        barGap: -1,
+        label: labelOption,
+        data: count
+    },
+    {
+        name: '已提交',
+        type: 'bar',
+
+        label: labelOption,
+        data: submmitted
+    },
+
+    {
+        name: '已批准',
+        type: 'line',
+
+        label: labelOption,
+        data: authorized
+    }
+]
+};;
+if (option && typeof option === "object") {
+myChart.setOption(option, true);
+}
+   
+          });		
+  
+  
+      });
+
+      
+  </script>  
+
+<script>
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+            responsive: true
+        });
+    });
+</script>
+
+</body>
+
+</html>

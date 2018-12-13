@@ -1,0 +1,37 @@
+{
+  "name": "docs-web",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "~1.18.2",
+    "browser-sync": "^2.26.3",
+    "connect-flash": "*",
+    "cookie-parser": "~1.4.3",
+    "cors": "*",
+    "date-utils": "*",
+    "debug": "~2.6.9",
+    "ejs": "*",
+    "eslint": "^5.10.0",
+    "express": "^4.16.4",
+    "express-messages": "*",
+    "express-session": "*",
+    "formidable": "*",
+    "gulp-clean-css": "*",
+    "gulp-header": "*",
+    "gulp-less": "*",
+    "gulp-rename": "*",
+    "gulp-uglify": "*",
+    "linspace": "*",
+    "morgan": "^1.9.1",
+    "multer": "*",
+    "pg": "^7.4.1",
+    "serve-favicon": "~2.4.5"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.0",
+    "gulp-livereload": "^4.0.1"
+  }
+}
