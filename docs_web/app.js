@@ -9,6 +9,7 @@ var index = require('./routes/index');
 var lfcontact = require('./routes/lfcontact');
 var data = require('./routes/data');
 var reply = require('./routes/reply');
+var deviceOverview = require('./routes/device');
 
 var app = express();
 // view engine setup
@@ -29,6 +30,9 @@ app.use('/', index);
 app.use('/data', data);
 app.use('/lfcontact', lfcontact);
 app.use('/reply', reply);
+// app.use('/deviceOverview',deviceOverview);
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

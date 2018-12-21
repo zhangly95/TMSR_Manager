@@ -6,6 +6,13 @@ var pg2 = require('./pgconn');
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'TMSR-Documents 核能文档管理系统' });
 });
+router.get('/deviceOverView', function(req, res, next) {
+  res.render('deviceOverView', { title: '设备概览' });
+});
+router.get('/system1', function(req, res, next) {
+  res.render('system1', { title: '熔盐储罐与管路系统' });
+});
+
 
 
 router.get('/lf1_primary', function(req, res, next) {
@@ -24,7 +31,6 @@ router.get('/add_new_contact', function (req, res, next) {
   // console.log(req.params)
   res.render('lfnewcontact');
 })
-
 
 //初设计文件时间轴的添加
 router.get('/add_new_primary/:file_name', function (req, res, next) {

@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>TMSR Documents - 熔盐泵实验平台文档管理系统</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <link href="/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="/vendor/morrisjs/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+    .a:hover {
+        color:blue;
+    }
+
+    </style>
+  
+
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="">TMSR Documents v2.0</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-tasks">
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong>LF1 堆物理</strong>
+                                        <span class="pull-right text-muted">100% Complete</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                            <span class="sr-only">100% Complete (success)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong>安全分析</strong>
+                                        <span class="pull-right text-muted">20% Complete</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                                            <span class="sr-only">20% Complete</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong>堆本体</strong>
+                                        <span class="pull-right text-muted">60% Complete</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                            <span class="sr-only">60% Complete (warning)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong>熔盐回路</strong>
+                                        <span class="pull-right text-muted">80% Complete</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                                            <span class="sr-only">80% Complete (danger)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a class="text-center" href="#">
+                                <strong>See All Tasks</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-tasks -->
+                </li>
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-alerts">
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-comment fa-fw"></i> New Comment
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                    <span class="pull-right text-muted small">12 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-envelope fa-fw"></i> Message Sent
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-tasks fa-fw"></i> New Task
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a class="text-center" href="#">
+                                <strong>See All Alerts</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-alerts -->
+                </li>
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                        <li>
+                            <a href="/"><i class="fa fa-dashboard fa-fw"></i>LF1 文件管理</a>
+                        </li>
+                        <li>
+                            <a href=" /lfcontact">
+                                <i class="fa fa-edit fa-fw"></i>工作联系单</a>
+                        </li>
+                        <li>
+                            <a href="/lf1_note">
+                                <i class="fa fa-edit fa-fw"></i>技术通知单</a>
+                        </li>
+                        <li>
+                            <a href="/lf1_concept_design"><i class="fa fa-bar-chart-o fa-fw"></i>概念设计文件</a>
+                   
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="/lf1_scheme_design">
+                                <i class="fa fa-bar-chart-o fa-fw"></i>方案设计文件</a>
+                        
+                            <!-- /.nav-second-level -->
+                        </li>
+
+                        <li>
+                            <a href="/lf1_primary"><i class="fa fa-wrench fa-fw"></i>初步设计文件<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li ng-repeat="x in systems">
+                                        <a href="/proto/{{x}}">{{x}}</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-wrench fa-fw"></i>施工图设计文件
+                                <span class="fa arrow"></span>
+                            </a>
+                            <ul class="nav nav-second-level">
+                                <li ng-repeat="x in systems">
+                                    <a href="/const/{{x}}">{{x}}</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-dashboard fa-fw"></i>设备管理
+                                <span class="fa arrow"></span>
+                            </a>
+                                    <ul class="nav nav-second-level">
+                                        <li>
+                                            <a href="/deviceOverview">超高温熔盐泵测试装置</a>
+                                        </li>
+                                        <li >
+                                            <a href="/list">伴热保温系统</a>
+                                        </li>
+                                        <li >
+                                            <a href="/detail">熔盐阀</a>
+                                        </li>
+                                        <li >
+                                            <a href="/detail">熔盐管路波纹管</a>
+                                        </li>
+                                        <li >
+                                            <a href="/detail">钢结构平台</a>
+                                        </li>
+                                        <li >
+                                            <a href="/detail">测试装置混净土基础</a>
+                                        </li>
+                                        <li >
+                                            <a href="/detail">机械设备安装</a>
+                                        </li>
+                                        <li >
+                                            <a href="/detail">真空系统</a>
+                                        </li>
+                                        <li >
+                                            <a href="/detail">在线净化器</a>
+                                        </li>
+                                        <li >
+                                            <a href="/detail">在线取样装置</a>
+                                        </li>
+                                        <li >
+                                            <a href="/detail">测量设备</a>
+                                        </li>
+                                        <li >
+                                            <a href="/detail">控制系统</a>
+                                        </li>
+                                        <li >
+                                            <a href="/detail">辅助配套设备</a>
+                                        </li>
+                                        <li >
+                                            <a href="/detail">气路系统</a>
+                                        </li>
+                                        <li >
+                                            <a href="/detail">熔盐</a>
+                                        </li>
+                                    </ul>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">LF1 设备管理</h1>
+                </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                      <!-- /.panel -->
+                      <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i> 超高温熔盐泵测试装置
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="table-responsive" style="float:left;margin:40px;overflow:hidden" >
+                                          <img class="img1" src="/assets/pump_design.jpg" alt="熔盐泵台架" height="300px">
+                                        </div>
+                                        <!-- /.table-responsive -->
+                                    </div>
+                                    <div class="col-lg-6">
+                                            <div class="table-responsive">
+                                              <img src="/assets/pump_system.jpg" alt="熔盐泵台架" height="300px">
+                                            </div>
+                                            <!-- /.table-responsive -->
+                                    </div>
+                                </div>
+                                <!-- /.row -->
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="panel panel-default">
+                                 <div class="panel-heading">
+                                    <i class="fa fa-bar-chart-o fa-fw"></i> TMSR熔盐泵实验平台设备信息-按系统
+                                        <div class="pull-right">
+                                <!-- <div class="btn-group">
+                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                        总数 {{total_num}}
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right" role="menu">
+                                            <li ng-repeat="x in systems"><a href="/proto/{{x}}">{{x}}</a></li>    
+
+                                    </ul>
+                                </div> -->
+                                        </div>
+                                 </div>
+                        <!-- /.panel-heading -->
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-lg-10">
+                                           <div id="container" style="height:600px"> </div>
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <div class="row pre-scrollable" style="max-height:486px" >
+                                                <ul class="list-group">
+                                                        <a href="/system1" class="list-group-item active">熔盐储罐及管路系统</a>
+                                                        <a href="#" class="list-group-item">伴热保温系统</a>
+                                                        <a href="#" class="list-group-item">熔盐阀</a>
+                                                        <a href="#" class="list-group-item">熔盐管路波纹管</a>
+                                                        <a href="#" class="list-group-item">测试装置混凝土基础</a>
+                                                        <a href="#" class="list-group-item">机械设备安装</a>
+                                                        <a href="#" class="list-group-item">真空系统</a>
+                                                        <a href="#" class="list-group-item">在线净化器</a>
+                                                        <a href="#" class="list-group-item">在线取样装置</a>
+                                                        <a href="#" class="list-group-item">测量设备</a>
+                                                        <a href="#" class="list-group-item">控制系统</a>
+                                                        <a href="#" class="list-group-item">辅助配套设备</a>
+                                                        <a href="#" class="list-group-item">气路系统</a>
+                                                        <a href="#" class="list-group-item">熔盐</a>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        <!-- /.panel-body -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.panel -->
+                    <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> 设备信息列表
+                            <!-- <div class="pull-right">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                        Actions
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right" role="menu">
+                                        <li><a href="#">Action</a>
+                                        </li>
+                                        <li><a href="#">Another action</a>
+                                        </li>
+                                        <li><a href="#">Something else here</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li><a href="#">Separated link</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div> -->
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="table-responsive">
+                                        <table id="example" width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                            <thead>
+                                                <tr>
+                                                    <th>设备编号</th>
+                                                    <th>设备名称</th>
+                                                    <th >数量</th>
+                                                    <th >时间</th>
+                                                    <th >图纸</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                    <!-- /.table-responsive -->
+                                </div>
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    
+                    <!-- /.panel -->
+                </div>
+                
+                <!-- /.col-lg-4 -->
+            
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+      <!-- jQuery -->
+      <script src="/vendor/jquery/jquery.min.js"></script>
+
+      <!-- Bootstrap Core JavaScript -->
+      <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+  
+      <script src="/vendor/datatables/js/jquery.dataTables.min.js"></script>
+      <script src="/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+      <script src="/vendor/datatables-responsive/dataTables.responsive.js"></script>
+  
+      <!-- Metis Menu Plugin JavaScript -->
+      <script src="/vendor/metisMenu/metisMenu.min.js"></script>
+  
+      <!-- Morris Charts JavaScript -->
+      <script src="/vendor/raphael/raphael.min.js"></script>
+      <script src="/vendor/morrisjs/morris.min.js"></script>
+      <script src="/data/morris-data.js"></script>
+      <script src="/vendor/echarts.min.js"></script>
+      
+  
+  
+      <!-- Custom Theme JavaScript -->
+      <script src="/dist/js/sb-admin-2.js"></script>
+    
+  <script src="js/angular.min.js"></script> 
+  <script>
+              
+              
+      var app = angular.module('myApp', []);
+      app.controller('myCtrl', function($scope, $http) {   
+      var myUrl = "http://10.10.2.29:3000/data/lf1?callback=JSON_CALLBACK";
+    //   var myUrl_input = "http://10.10.2.29:3000/data/input_file?callback=JSON_CALLBACK";
+    //   $http.jsonp(myUrl_input).success(function(response){
+    //     // $scope.input_file=response;
+    //     var data = new Array();
+    //     var i=0;
+    //     response.forEach(function(responseE){
+    //     // console.log(response);
+            
+    //     data.push([i,responseE.name, responseE.size, responseE.time, responseE.path]);
+    //     i++;
+    //     })
+    //     $(document).ready(function () {
+    //           $('#example').DataTable({
+                  
+    //               // "paging":   false,
+    //               // "ordering": false,
+    //               "info": true,
+    //               "language": {
+    //                   "lengthMenu": "每页 _MENU_ 条记录",
+    //                   "zeroRecords": "没有找到记录",
+    //                   "info": "第 _PAGE_ 页 ( 总共 _PAGES_ 页 )",
+    //                   "infoEmpty": "无记录",
+    //                   "infoFiltered": "(从 _MAX_ 条记录过滤)",
+    //                   "search": "检索",
+
+    //                   "paginate": {
+    //                       "first": "第一页",
+    //                       "previous": "上一页",
+    //                       "next": "下一页",
+    //                       "last": "最后一页"
+    //                   }
+    //               },
+
+    //               "data": data,
+    //               "columnDefs": [
+    //                   {
+    //                       // The `data` parameter refers to the data for the cell (defined by the
+    //                       // `data` option, which defaults to the column being worked with, in
+    //                       // this case `data: 0`.
+    //                       "render": function (data, type, row) {
+    //                           // return data +' ('+ row[3]+')';
+    //                           return '<a href="' + row[4] + '">' + data + '</a>';
+    //                       },
+    //                       "targets": 1
+    //                   },
+                      
+    //                   { "visible": false, "targets": [4] }
+    //               ]
+
+    //           });
+    //       }); 
+    //   });
+    //   $http.jsonp(myUrl).success(function(response) {
+          
+          var i=0;
+          systems=[];
+          count=[];
+          submmitted=[];
+          authorized=[];
+          file_sum=0;
+          file_sub=0;
+        //   response.forEach(function(key){
+      
+        //    systems[i]=key.systems;
+        //    count[i]=key.count;
+        //    submmitted[i]=key.submmitted;
+        //    authorized[i]=key.authorized;
+        //    i++;
+        //    file_sum=file_sum+parseInt(key.count?key.count:0);
+        //    file_sub=file_sub+parseInt(key.submmitted?key.submmitted:0);
+           
+        //   });
+          $scope.systems = systems;
+          $scope.authorized=authorized;
+          $scope.submmitted=submmitted;
+          $scope.count=count;
+          $scope.total_num=file_sum;
+          $scope.total_sub=file_sub;
+
+
+          
+
+          // console.log("when");
+      //     console.log(response);
+      var dom = document.getElementById("container");
+ 
+ var myChart = echarts.init(dom);
+ var app = {};
+ option = null;
+ var posList = [
+'left', 'right', 'top', 'bottom',
+'inside',
+'insideTop', 'insideLeft', 'insideRight', 'insideBottom',
+'insideTopLeft', 'insideTopRight', 'insideBottomLeft', 'insideBottomRight'
+ ];
+
+ const treedata = {
+            "children": [
+                {
+                    "children": [
+                        {
+                            "children": [],
+                            "name": "熔盐罐",
+                        },
+                        {
+                            "children": [],
+                            "name": "泵罐",
+                        },
+                        {
+                            "children": [],
+                            "name": "转运罐",
+                        },
+                        {
+                            "children": [],
+                            "name": "称量罐",
+                        },
+                        {
+                            "children": [],
+                            "name": "泵安装接管膨胀节",
+                        },
+                        {
+                            "children": [],
+                            "name": "管道",
+                        },
+                        {
+                            "children": [],
+                            "name": "冷冻法兰",
+                        },
+                        {
+                            "children": [],
+                            "name": "散热器",
+                        },
+                        {
+                            "children": [],
+                            "name": "空冷系统",
+                        },
+                        {
+                            "children": [],
+                            "name": "管路支撑件",
+                        },
+                        {
+                            "children": [],
+                            "name": "初步设计",
+                        },
+                    ],
+                    "name": "熔盐储罐及管路系统",
+                },
+                {
+                    "children": [
+                        {
+                            "children": [],
+                            "name": "熔盐罐加热器",
+                        },
+                        {
+                            "children": [],
+                            "name": "转运罐加热器",
+                        },
+                        {
+                            "children": [],
+                            "name": "称量罐加热器",
+                        },
+                        {
+                            "children": [],
+                            "name": "泵罐加热器",
+                        },
+                        {
+                            "children": [],
+                            "name": "管道加热器",
+                        },
+                        {
+                            "children": [],
+                            "name": "阀门加热器",
+                        },
+                        {
+                            "children": [],
+                            "name": "隔热保温",
+                        },
+                    ],
+                    "name": "伴热保温系统",
+                },
+                {
+                    "children": [
+                        {
+                            "children": [],
+                            "name": "DN25熔盐截止阀",
+                        },
+                        {
+                            "children": [],
+                            "name": "DN50熔盐截止阀",
+                        },
+                        {
+                            "children": [],
+                            "name": "DN100熔盐截止阀",
+                        },
+                        {
+                            "children": [],
+                            "name": "DN100熔盐调节阀",
+                        },
+                    ],
+                    "name": "熔盐阀",
+                },
+                {
+                    "children": [],
+                    "name": "熔盐管路波纹管",
+                },
+                {
+                    "children": [],
+                    "name": "钢结构平台",
+                },
+                {
+                    "children":[
+                        {
+                            "children": [],
+                            "name": "场地处理", 
+                        },
+                        {
+                            "children": [],
+                            "name": "熔盐罐混凝土基础", 
+                        },
+                        {
+                            "children": [],
+                            "name": "转运罐混凝土基础", 
+                        },
+                        {
+                            "children": [],
+                            "name": "称量罐混凝土基础", 
+                        },
+                        ],
+                    "name": "测试装置混净土基础",
+                },
+                {
+                    "children": [],
+                    "name": "机械设备安装",
+                },
+                {
+                    "children": [],
+                    "name": "真空系统",
+                },
+                {
+                    "children": [],
+                    "name": "在线净化器",
+                },
+                {
+                    "children": [],
+                    "name": "在线取样装置",
+                },
+                {
+                    "children": [
+                    {
+                        "children": [],
+                        "name": "变频功率测量系统", 
+                    },
+                    {
+                        "children": [],
+                        "name": "振动测量仪", 
+                    },
+                    {
+                        "children": [],
+                        "name": "填充NaK式压力计", 
+                    },
+                    {
+                        "children": [],
+                        "name": "填充NaK式压差计", 
+                    },
+                    {
+                        "children": [],
+                        "name": "高温熔盐流量计", 
+                    },
+                    {
+                        "children": [],
+                        "name": "雷达液位计", 
+                    },
+                    {
+                        "children": [],
+                        "name": "K型热电偶", 
+                    },
+                    {
+                        "children": [],
+                        "name": "多点铠装热电偶", 
+                    },
+                    {
+                        "children": [],
+                        "name": "位移传感器", 
+                    },
+                    {
+                        "children": [],
+                        "name": "散热器空气流量计", 
+                    },
+                    {
+                        "children": [],
+                        "name": "称重计", 
+                    },
+                    {
+                        "children": [],
+                        "name": "泵转速测量仪", 
+                    },
+                    {
+                        "children": [],
+                        "name": "覆盖气压力计", 
+                    },
+                    {
+                        "children": [],
+                        "name": "吹扫冷却气体压力计", 
+                    },
+                    {
+                        "children": [],
+                        "name": "网络摄像头", 
+                    },
+                    {
+                        "children": [],
+                        "name": "视频刻录机", 
+                    },
+                    ],
+                    "name": "测量设备",
+                },
+                {
+                    children:[
+                        {
+                            "children": [],
+                            "name": "AI", 
+                        },
+                        {
+                            "children": [],
+                            "name": "AO", 
+                        },
+                        {
+                            "children": [],
+                            "name": "DI", 
+                        },
+                        {
+                            "children": [],
+                            "name": "DO", 
+                        },
+                        {
+                            "children": [],
+                            "name": "TC", 
+                        },
+                        {
+                            "children": [],
+                            "name": "主站控制器", 
+                        },
+                        {
+                            "children": [],
+                            "name": "数据存储", 
+                        },
+                        {
+                            "children": [],
+                            "name": "网络交换机", 
+                        },
+                        {
+                            "children": [],
+                            "name": "操作台", 
+                        },
+                        {
+                            "children": [],
+                            "name": "操作终端", 
+                        },
+                        {
+                            "children": [],
+                            "name": "大屏幕", 
+                        },
+                        {
+                            "children": [],
+                            "name": "线缆", 
+                        },
+
+                    ],
+                    name: "控制系统",
+                },
+                {
+                    children:[
+                        {
+                            "children": [],
+                            "name": "入户配电柜", 
+                        },
+                        {
+                            "children": [],
+                            "name": "照明插座箱", 
+                        },
+                        {
+                            "children": [],
+                            "name": "强弱电端子箱", 
+                        },
+                        {
+                            "children": [],
+                            "name": "接地箱", 
+                        },
+                        {
+                            "children": [],
+                            "name": "火灾漏电报警系统", 
+                        },
+                        {
+                            "children": [],
+                            "name": "插座箱", 
+                        },
+                        {
+                            "children": [],
+                            "name": "干粉灭火器（3kg）", 
+                        },
+                        {
+                            "children": [],
+                            "name": "照明灯具", 
+                        },
+                        {
+                            "children": [],
+                            "name": "换气扇", 
+                        },
+                        {
+                            "children": [],
+                            "name": "信号端子", 
+                        },
+                        {
+                            "children": [],
+                            "name": "桥架及附件", 
+                        },
+                        {
+                            "children": [],
+                            "name": "多种规格动力电缆", 
+                        },
+                        {
+                            "children": [],
+                            "name": "多种规格信号电缆", 
+                        },
+                        {
+                            "children": [],
+                            "name": "接地", 
+                        },
+
+                    ],
+                    name: "辅助配套设备",
+                },
+                {
+                    children:[
+                        {
+                            "children": [],
+                            "name": "配气柜", 
+                        },
+                        {
+                            "children": [],
+                            "name": "尾气处理柜", 
+                        },
+                        {
+                            "children": [],
+                            "name": "手动阀门", 
+                        },
+                        {
+                            "children": [],
+                            "name": "压力传感器", 
+                        },
+                        {
+                            "children": [],
+                            "name": "气体管道和支撑", 
+                        },
+                        {
+                            "children": [],
+                            "name": "管道连接件", 
+                        },
+                    ],
+                    name: "气路系统",
+                },
+                {
+                    children: [],
+                    name: "熔盐",
+                }
+
+            ],
+            "name": "超高温熔盐泵测试装置",
+        } 
+
+ app.configParameters = {
+     rotate: {
+     min: -90,
+     max: 90
+     },
+align: {
+    options: {
+        left: 'left',
+        center: 'center',
+        right: 'right'
+    }
+},
+verticalAlign: {
+    options: {
+        top: 'top',
+        middle: 'middle',
+        bottom: 'bottom'
+    }
+},
+position: {
+    options: echarts.util.reduce(posList, function (map, pos) {
+        map[pos] = pos;
+        return map;
+    }, {})
+},
+distance: {
+    min: 0,
+    max: 100
+}
+};
+
+app.config = {
+rotate: 90,
+align: 'left',
+verticalAlign: 'middle',
+position: 'insideBottom',
+distance: 15,
+onChange: function () {
+    var labelOption = {
+        normal: {
+            rotate: app.config.rotate,
+            align: app.config.align,
+            verticalAlign: app.config.verticalAlign,
+            position: app.config.position,
+            distance: app.config.distance
+        }
+    };
+    myChart.setOption({
+        title:{
+            text:"设备信息",
+        },
+        tooltip: {
+            // show：'true',//默认：true；是否显示提示框组件，包括提示框浮层和 axisPointer。
+            trigger: 'item',// 默认：item；触发类型。item：数据项图形触发，主要在散点图，饼图等无类目轴的图表中使用。'axis'：坐标轴触发，主要在柱状图，折线图等会使用类目轴的图表中使用。'none':什么都不触发。
+            triggerOn: 'mousemove',
+        },
+        // legend: {
+        //     type: 'scroll',
+        //     orient: 'vertical',
+        //     right: 10,
+        //     top: 20,
+        //     bottom: 20,
+        //     data: [1,2,3],
+        //     // selected: data.selected
+
+        // },
+        series:[
+            {
+                type: 'tree',
+
+                data: [treedata],
+
+                left: '7%',
+                right: '20%',
+                top: '1%',
+                bottom: '1%',
+
+                symbolSize: 15,
+
+                // orient: 'vertical',
+
+                expandAndCollapse: true,// 默认：true；子树折叠和展开的交互，默认打开 。
+
+                initialTreeDepth:1,// 默认：2，树图初始展开的层级（深度）。根节点是第 0 层，然后是第 1 层、第 2 层，... ，直到叶子节点
+
+                label: {
+                    normal: {
+                        position: 'left',
+                        verticalAlign: 'middle',// 文字垂直对齐方式，默认自动。
+                        align: 'right',// 文字水平对齐方式，默认自动。
+                        fontSize: 20,// 文字的字体大小
+                    },
+                },
+
+                leaves: {
+                    label: {
+                        normal: {
+                            position: 'right',
+                            verticalAlign: 'middle',
+                            align: 'left',
+                        },
+                    },
+                },
+                animationDurationUpdate: 750,       
+            },
+        ],
+    });  
+}
+};
+
+
+var labelOption = {
+normal: {
+    show: true,
+    position: "insideTop",
+
+
+
+
+    formatter: '{c} ',
+    fontSize: 16,
+    rich: {
+        name: {
+            textBorderColor: '#fff'
+        }
+    }
+}
+};
+
+option = {
+
+    title:{
+        text:"设备信息",
+    },
+    tooltip: {
+        // show：'true',//默认：true；是否显示提示框组件，包括提示框浮层和 axisPointer。
+        trigger: 'item',// 默认：item；触发类型。item：数据项图形触发，主要在散点图，饼图等无类目轴的图表中使用。'axis'：坐标轴触发，主要在柱状图，折线图等会使用类目轴的图表中使用。'none':什么都不触发。
+        triggerOn: 'mousemove',
+    },
+
+series:[
+{
+    type: 'tree',
+
+    data: [treedata],
+
+    left: '7%',
+    right: '20%',
+    top: '1%',
+    bottom: '1%',
+
+    symbolSize: 15,
+
+    // orient: 'vertical',
+
+    expandAndCollapse: true,// 默认：true；子树折叠和展开的交互，默认打开 。
+
+    initialTreeDepth:1,// 默认：2，树图初始展开的层级（深度）。根节点是第 0 层，然后是第 1 层、第 2 层，... ，直到叶子节点
+
+    label: {
+        normal: {
+            position: 'left',
+            verticalAlign: 'middle',// 文字垂直对齐方式，默认自动。
+            align: 'right',// 文字水平对齐方式，默认自动。
+            fontSize: 20,// 文字的字体大小
+        },
+    },
+
+    leaves: {
+        label: {
+            normal: {
+                position: 'right',
+                verticalAlign: 'middle',
+                align: 'left',
+            },
+        },
+    },
+    animationDurationUpdate: 750,       
+},
+],
+};;
+if (option && typeof option === "object") {
+myChart.setOption(option, true);
+}
+   
+        //   });		
+  
+  
+      });
+
+      
+  </script>  
+
+<script>
+    var response=[
+    {"order":"1.1","name":"熔盐罐","amount":"1","path":"/files/TMSR-LF1工程/初步设计/01.设计输入参数/！20180124-TMSR-LF1 事故分析输入参数V1.0.pdf","time":"20180124"},
+    {"order":"1.2","name":"泵罐","amount":"1","path":"/files/TMSR-LF1工程/初步设计/01.设计输入参数/！20180124-TMSR-LF1 事故分析输入参数V1.0.pdf","time":"20180124"},
+    {"order":"1.2","name":"泵罐","amount":"1","path":"/files/TMSR-LF1工程/初步设计/01.设计输入参数/！20180124-TMSR-LF1 事故分析输入参数V1.0.pdf","time":"20180124"},
+    {"order":"1.3","name":"转运罐","amount":"1","path":"/files/TMSR-LF1工程/初步设计/01.设计输入参数/！20180124-TMSR-LF1 事故分析输入参数V1.0.pdf","time":"20180124"},
+    {"order":"1.4","name":"称量罐","amount":"1","path":"/files/TMSR-LF1工程/初步设计/01.设计输入参数/！20180124-TMSR-LF1 事故分析输入参数V1.0.pdf","time":"20180124"},
+    {"order":"2.1","name":"熔盐罐加热器","amount":"1","path":"/files/TMSR-LF1工程/初步设计/01.设计输入参数/！20180124-TMSR-LF1 事故分析输入参数V1.0.pdf","time":"20180124"},
+    {"order":"2.2","name":"转运罐加热器","amount":"1","path":"/files/TMSR-LF1工程/初步设计/01.设计输入参数/！20180124-TMSR-LF1 事故分析输入参数V1.0.pdf","time":"20180124"},
+    {"order":"2.3","name":"称量罐加热器","amount":"1","path":"/files/TMSR-LF1工程/初步设计/01.设计输入参数/！20180124-TMSR-LF1 事故分析输入参数V1.0.pdf","time":"20180124"},
+    {"order":"2.4","name":"泵罐加热器","amount":"1","path":"/files/TMSR-LF1工程/初步设计/01.设计输入参数/！20180124-TMSR-LF1 事故分析输入参数V1.0.pdf","time":"20180124"},
+    {"order":"3.1","name":"DN25熔盐截止阀","amount":"3","path":"/files/TMSR-LF1工程/初步设计/01.设计输入参数/！20180124-TMSR-LF1 事故分析输入参数V1.0.pdf","time":"20180124"},
+    {"order":"3.2","name":"DN50熔盐截止阀","amount":"2","path":"/files/TMSR-LF1工程/初步设计/01.设计输入参数/！20180124-TMSR-LF1 事故分析输入参数V1.0.pdf","time":"20180124"},
+    {"order":"3.3","name":"DN100熔盐截止阀","amount":"7","path":"/files/TMSR-LF1工程/初步设计/01.设计输入参数/！20180124-TMSR-LF1 事故分析输入参数V1.0.pdf","time":"20180124"},
+    ]
+    
+    var data = new Array();
+        response.forEach(function(responseE){
+        // console.log(response);  
+        data.push([responseE.order,responseE.name, responseE.amount, responseE.time, responseE.path]); 
+        })
+     $('#example').DataTable({
+                  
+                  // "paging":   false,
+                  // "ordering": false,
+                  "info": true,
+                  "language": {
+                      "lengthMenu": "每页 _MENU_ 条记录",
+                      "zeroRecords": "没有找到记录",
+                      "info": "第 _PAGE_ 页 ( 总共 _PAGES_ 页 )",
+                      "infoEmpty": "无记录",
+                      "infoFiltered": "(从 _MAX_ 条记录过滤)",
+                      "search": "检索",
+
+                      "paginate": {
+                          "first": "第一页",
+                          "previous": "上一页",
+                          "next": "下一页",
+                          "last": "最后一页"
+                      }
+                  },
+
+                  "data": data,
+                  "columnDefs": [
+                      {
+                          "render": function (data, type, row) {
+                              // return data +' ('+ row[3]+')';
+                              return '<a href="' + row[4] + '">' + data + '</a>';
+                          },
+                          "targets": 4
+                      },
+                      
+                      { "visible": true, "targets": [4] }
+                  ]
+
+              });
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+            responsive: true
+        });
+    });
+</script>
+
+</body>
+
+</html>
