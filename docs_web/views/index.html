@@ -30,6 +30,7 @@
 
     <!-- Custom Fonts -->
     <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -276,7 +277,7 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                        <li>
+                        <li >
                             <a href="#">
                                 <i class="fa fa-dashboard fa-fw"></i>设备管理
                                 <span class="fa arrow"></span>
@@ -284,6 +285,15 @@
                                     <ul class="nav nav-second-level">
                                         <li>
                                             <a href="/deviceOverview">超高温熔盐泵测试装置</a>
+                                        </li>
+                                        <li ng-repeat="y in systemList">
+                                           <a href="#/system/{{y.system_id}}">{{y.system_name}}</a>
+                                        </li>
+                                        <!-- <li>
+                                            <a href="/deviceOverview">超高温熔盐泵测试装置</a>
+                                        </li>
+                                        <li>
+                                            <a href="/deviceOverview">熔盐储罐及管路系统</a>
                                         </li>
                                         <li >
                                             <a href="/list">伴热保温系统</a>
@@ -326,7 +336,7 @@
                                         </li>
                                         <li >
                                             <a href="/detail">熔盐</a>
-                                        </li>
+                                        </li> -->
                                     </ul>
                         </li>
 
@@ -828,13 +838,14 @@
 
     </div>
     <!-- /#wrapper -->
+      <script src="js/angular.min.js"></script> 
 
       <!-- jQuery -->
       <script src="/vendor/jquery/jquery.min.js"></script>
 
       <!-- Bootstrap Core JavaScript -->
       <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
-  
+      
       <script src="/vendor/datatables/js/jquery.dataTables.min.js"></script>
       <script src="/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
       <script src="/vendor/datatables-responsive/dataTables.responsive.js"></script>
@@ -846,21 +857,41 @@
       <script src="/vendor/raphael/raphael.min.js"></script>
       <script src="/vendor/morrisjs/morris.min.js"></script>
       <script src="/data/morris-data.js"></script>
-      <script src="/vendor/echarts.min.js"></script>
-      
-  
-  
+      <script src="/vendor/echarts.min.js"></script> 
       <!-- Custom Theme JavaScript -->
       <script src="/dist/js/sb-admin-2.js"></script>
-    
-  <script src="js/angular.min.js"></script> 
-  <script>
-              
-              
-      var app = angular.module('myApp', []);
+      <script src="js/angular-route.js"></script>
+     
+      <script>           
+      //   var app = angular.module('myApp', []);
+      var app = angular.module('myApp', ['ngRoute']);
+
+     // 配置动态路由
+      app.config(['$routeProvider', function ($routeProvider) {
+        $routeProvider
+            .when('/system/0', {//当解析到路径的时候，会调用viws/about.html模板和使用aboutCtrl控制器
+                templateUrl: '../views/system1.html',
+                controller: 'system1_ctrl'
+            })
+           
+      }]);
+
+
       app.controller('myCtrl', function($scope, $http) {   
       var myUrl = "http://10.10.2.29:3000/data/lf1?callback=JSON_CALLBACK";
       var myUrl_input = "http://10.10.2.29:3000/data/input_file?callback=JSON_CALLBACK";
+
+
+      var myUrl_deviceSystem = "http://localhost:3000/data/device_system?callback=JSON_CALLBACK";
+      $http.jsonp(myUrl_deviceSystem).success(function(response){
+         var systemList = [];
+         response.forEach(function(responseE){
+             systemList.push(responseE)
+         })
+        //  console.log(systemList)
+         $scope.systemList = systemList;
+     })
+
       $http.jsonp(myUrl_input).success(function(response){
         // $scope.input_file=response;
         var data = new Array();

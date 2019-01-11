@@ -47,7 +47,7 @@
 
 </head>
 
-<body ng-app="myApp" ng-controller="myCtrl">
+<body ng-app="myApp" ng-controller="deviceOverviewCtrl">
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -290,6 +290,9 @@
                                         <li>
                                             <a href="/deviceOverview">超高温熔盐泵测试装置</a>
                                         </li>
+                                        <li>
+                                            <a href="/deviceOverview">熔盐储罐及管路系统</a>
+                                        </li>
                                         <li >
                                             <a href="/list">伴热保温系统</a>
                                         </li>
@@ -402,9 +405,12 @@
                                            <div id="container" style="height:600px"> </div>
                                         </div>
                                         <div class="col-lg-2">
-                                            <div class="row pre-scrollable" style="max-height:486px" >
-                                                <ul class="list-group">
-                                                        <a href="/system1" class="list-group-item active">熔盐储罐及管路系统</a>
+                                            <div class="row pre-scrollable" style="max-height:450px" >
+                                                <ul class="list-group" ng-repeat="y in systemList">
+                                                       
+                                                                <a href=`/deviceOverview/${y.system_id}`>{{y.system_name}}</a>
+                                                        
+                                                        <!-- <a href="/system1" class="list-group-item active">熔盐储罐及管路系统</a>
                                                         <a href="#" class="list-group-item">伴热保温系统</a>
                                                         <a href="#" class="list-group-item">熔盐阀</a>
                                                         <a href="#" class="list-group-item">熔盐管路波纹管</a>
@@ -417,7 +423,7 @@
                                                         <a href="#" class="list-group-item">控制系统</a>
                                                         <a href="#" class="list-group-item">辅助配套设备</a>
                                                         <a href="#" class="list-group-item">气路系统</a>
-                                                        <a href="#" class="list-group-item">熔盐</a>
+                                                        <a href="#" class="list-group-item">熔盐</a> -->
                                                 </ul>
                                             </div>
                                         </div>
@@ -513,13 +519,75 @@
       <!-- Custom Theme JavaScript -->
       <script src="/dist/js/sb-admin-2.js"></script>
     
-  <script src="js/angular.min.js"></script> 
-  <script>
-              
-              
+      <script src="js/angular.min.js"></script> 
+      <script>       
       var app = angular.module('myApp', []);
-      app.controller('myCtrl', function($scope, $http) {   
+      app.controller('deviceOverviewCtrl', function($scope, $http) {   
       var myUrl = "http://10.10.2.29:3000/data/lf1?callback=JSON_CALLBACK";
+
+      var myUrl_deviceSystem = "http://localhost:3000/data/device_system?callback=JSON_CALLBACK";
+      $http.jsonp(myUrl_deviceSystem).success(function(response){
+         var systemList = [];
+         response.forEach(function(responseE){
+             systemList.push(responseE)
+         })
+         $scope.systemList = systemList;
+     })
+    var myUrl_deviceList = "http://localhost:3000/data/device_list?callback=JSON_CALLBACK";
+   
+    $http.jsonp(myUrl_deviceList).success(function(response){ 
+        var deviceList = [];
+        response.forEach(function(responseE){
+            deviceList.push(responseE)
+        });
+        var data = new Array();
+        deviceList.forEach(function(list){  
+            data.push([list.device_id,list.device_name, list.amount,list.amount,list.drawing]); 
+        });
+        $('#example').DataTable({
+                  
+                  // "paging":   false,
+                  // "ordering": false,
+                  "info": true,
+                  "language": {
+                      "lengthMenu": "每页 _MENU_ 条记录",
+                      "zeroRecords": "没有找到记录",
+                      "info": "第 _PAGE_ 页 ( 总共 _PAGES_ 页 )",
+                      "infoEmpty": "无记录",
+                      "infoFiltered": "(从 _MAX_ 条记录过滤)",
+                      "search": "检索",
+
+                      "paginate": {
+                          "first": "第一页",
+                          "previous": "上一页",
+                          "next": "下一页",
+                          "last": "最后一页"
+                      }
+                  },
+
+                  "data": data,
+                  "columnDefs": [
+                      {
+                          "render": function (data, type, row) {
+                              // return data +' ('+ row[3]+')';
+                              return '<a href="' + row[4] + '">' + data + '</a>';
+                          },
+                          "targets": 4
+                      },
+                      
+                      { "visible": true, "targets": [4] }
+                  ]
+
+              });
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+            responsive: true
+        });
+    });
+
+     })
+
+ 
     //   var myUrl_input = "http://10.10.2.29:3000/data/input_file?callback=JSON_CALLBACK";
     //   $http.jsonp(myUrl_input).success(function(response){
     //     // $scope.input_file=response;
@@ -1183,66 +1251,7 @@ myChart.setOption(option, true);
   </script>  
 
 <script>
-    var response=[
-    {"order":"1.1","name":"熔盐罐","amount":"1","path":"/files/TMSR-LF1工程/初步设计/01.设计输入参数/！20180124-TMSR-LF1 事故分析输入参数V1.0.pdf","time":"20180124"},
-    {"order":"1.2","name":"泵罐","amount":"1","path":"/files/TMSR-LF1工程/初步设计/01.设计输入参数/！20180124-TMSR-LF1 事故分析输入参数V1.0.pdf","time":"20180124"},
-    {"order":"1.2","name":"泵罐","amount":"1","path":"/files/TMSR-LF1工程/初步设计/01.设计输入参数/！20180124-TMSR-LF1 事故分析输入参数V1.0.pdf","time":"20180124"},
-    {"order":"1.3","name":"转运罐","amount":"1","path":"/files/TMSR-LF1工程/初步设计/01.设计输入参数/！20180124-TMSR-LF1 事故分析输入参数V1.0.pdf","time":"20180124"},
-    {"order":"1.4","name":"称量罐","amount":"1","path":"/files/TMSR-LF1工程/初步设计/01.设计输入参数/！20180124-TMSR-LF1 事故分析输入参数V1.0.pdf","time":"20180124"},
-    {"order":"2.1","name":"熔盐罐加热器","amount":"1","path":"/files/TMSR-LF1工程/初步设计/01.设计输入参数/！20180124-TMSR-LF1 事故分析输入参数V1.0.pdf","time":"20180124"},
-    {"order":"2.2","name":"转运罐加热器","amount":"1","path":"/files/TMSR-LF1工程/初步设计/01.设计输入参数/！20180124-TMSR-LF1 事故分析输入参数V1.0.pdf","time":"20180124"},
-    {"order":"2.3","name":"称量罐加热器","amount":"1","path":"/files/TMSR-LF1工程/初步设计/01.设计输入参数/！20180124-TMSR-LF1 事故分析输入参数V1.0.pdf","time":"20180124"},
-    {"order":"2.4","name":"泵罐加热器","amount":"1","path":"/files/TMSR-LF1工程/初步设计/01.设计输入参数/！20180124-TMSR-LF1 事故分析输入参数V1.0.pdf","time":"20180124"},
-    {"order":"3.1","name":"DN25熔盐截止阀","amount":"3","path":"/files/TMSR-LF1工程/初步设计/01.设计输入参数/！20180124-TMSR-LF1 事故分析输入参数V1.0.pdf","time":"20180124"},
-    {"order":"3.2","name":"DN50熔盐截止阀","amount":"2","path":"/files/TMSR-LF1工程/初步设计/01.设计输入参数/！20180124-TMSR-LF1 事故分析输入参数V1.0.pdf","time":"20180124"},
-    {"order":"3.3","name":"DN100熔盐截止阀","amount":"7","path":"/files/TMSR-LF1工程/初步设计/01.设计输入参数/！20180124-TMSR-LF1 事故分析输入参数V1.0.pdf","time":"20180124"},
-    ]
-    
-    var data = new Array();
-        response.forEach(function(responseE){
-        // console.log(response);  
-        data.push([responseE.order,responseE.name, responseE.amount, responseE.time, responseE.path]); 
-        })
-     $('#example').DataTable({
-                  
-                  // "paging":   false,
-                  // "ordering": false,
-                  "info": true,
-                  "language": {
-                      "lengthMenu": "每页 _MENU_ 条记录",
-                      "zeroRecords": "没有找到记录",
-                      "info": "第 _PAGE_ 页 ( 总共 _PAGES_ 页 )",
-                      "infoEmpty": "无记录",
-                      "infoFiltered": "(从 _MAX_ 条记录过滤)",
-                      "search": "检索",
-
-                      "paginate": {
-                          "first": "第一页",
-                          "previous": "上一页",
-                          "next": "下一页",
-                          "last": "最后一页"
-                      }
-                  },
-
-                  "data": data,
-                  "columnDefs": [
-                      {
-                          "render": function (data, type, row) {
-                              // return data +' ('+ row[3]+')';
-                              return '<a href="' + row[4] + '">' + data + '</a>';
-                          },
-                          "targets": 4
-                      },
-                      
-                      { "visible": true, "targets": [4] }
-                  ]
-
-              });
-    $(document).ready(function() {
-        $('#dataTables-example').DataTable({
-            responsive: true
-        });
-    });
+   
 </script>
 
 </body>

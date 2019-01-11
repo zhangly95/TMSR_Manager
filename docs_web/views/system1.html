@@ -10,9 +10,11 @@
         <title>TMSR Documents - 熔盐泵实验平台文档管理系统</title>
     
         <!-- Bootstrap Core CSS -->
+       
         <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     
         <!-- MetisMenu CSS -->
+        <link href="/dist/css/bootstrap-table.css" rel="stylesheet">
         <link href="/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
     
         <link href="/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
@@ -28,6 +30,17 @@
     
         <!-- Custom Fonts -->
         <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+      
+        
+
+        <script>
+          function  onHandleChangeDevice(n){
+             
+              document.getElementById("deviceImg").src = `/assets/${n}.jpg`;
+
+          }
+    
+        </script>
 </head>
 <body ng-app="myApp" ng-controller="myCtrl">
     <div id="wrapper">
@@ -271,6 +284,9 @@
                                             <li>
                                                 <a href="/deviceOverview">超高温熔盐泵测试装置</a>
                                             </li>
+                                            <li>
+                                                <a href="/deviceOverview">熔盐储罐及管路系统</a>
+                                            </li>
                                             <li >
                                                 <a href="/list">伴热保温系统</a>
                                             </li>
@@ -327,31 +343,194 @@
                     <div class="col-lg-12">
                         <h1 class="page-header">熔盐储罐及管路系统</h1>
                         <div class="col-lg-2">
-                            <!-- <div class="row pre-scrollable" style="max-height:800px" > -->
-                                <ul class="list-group">
-                                    <a href="/system1" class="list-group-item active">熔盐罐</a>
-                                    <a href="#" class="list-group-item">泵罐</a>
-                                    <a href="#" class="list-group-item">转运罐</a>
-                                    <a href="#" class="list-group-item">称量罐</a>
-                                    <a href="#" class="list-group-item">泵安装接管膨胀节</a>
-                                    <a href="#" class="list-group-item">管道</a>
-                                    <a href="#" class="list-group-item">冷冻法兰</a>
-                                    <a href="#" class="list-group-item">散热器</a>
-                                    <a href="#" class="list-group-item">空冷系统</a>
-                                    <a href="#" class="list-group-item">管路支撑件</a>
-                                    <a href="#" class="list-group-item">初步设计</a>
+                            <div class="row pre-scrollable" style="max-height:436px" >
+                                <ul class="list-group" ng-repeat="x in deviceList">
+                                    <button class="list-group-item" onclick="onHandleChangeDevice(0)">{{x.device_name}}</button>
+                                    <!-- <button class="list-group-item active" onclick="onHandleChangeDevice(10)">熔盐罐</button>
+                                    <button class="list-group-item" onclick="onHandleChangeDevice(0)">泵罐</button>
+                                    <button class="list-group-item" onclick="onHandleChangeDevice(1)">转运罐</button>
+                                    <button class="list-group-item" onclick="onHandleChangeDevice(2)">称量罐</button>
+                                    <button class="list-group-item" onclick="onHandleChangeDevice(3)">泵安装接管膨胀节</button>
+                                    <button class="list-group-item" onclick="onHandleChangeDevice(4)">管道</button>
+                                    <button class="list-group-item" onclick="onHandleChangeDevice(5)">冷冻法兰</button>
+                                    <button class="list-group-item" onclick="onHandleChangeDevice(6)">散热器</button>
+                                    <button class="list-group-item" onclick="onHandleChangeDevice(7)">空冷系统</button>
+                                    <button class="list-group-item" onclick="onHandleChangeDevice(8)">管路支撑件</button>
+                                    <button class="list-group-item" onclick="onHandleChangeDevice(9)">初步设计</button> -->
                                 </ul>   
-                            <!-- </div> -->
+                            </div>
+                            <!-- <div class="btn-group">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                            熔盐罐 <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a onclick="onHandleChangeDevice(0)">泵罐</a></li>
+                                        <li><a onclick="onHandleChangeDevice(0)">泵罐</a></li>
+                                        <li><a onclick="onHandleChangeDevice(1)">转运罐</a></li>
+                                        <li> <a onclick="onHandleChangeDevice(2)">称量罐</a></li>
+                                    </ul>
+                            </div> -->
                         </div>
+                        <div class="col-lg-10">
                             <div class="col-lg-4" style="margin:50px 10px 10px 200px">
-                                <img src="/assets/pump_system.jpg" alt="熔盐泵台架" height="300px">
+                                <img id="deviceImg" src="/assets/10.jpg" alt="熔盐泵台架" height="300px">
                             </div>
-                            <div class="col-lg-4" style="margin:50px 10px 10px 200px">
-                                <img src="/assets/pump_system.jpg" alt="熔盐泵台架" height="300px">
+                            <div  class="col-lg-6">
+                                    <div class="row base-margin"  id="query">
+                                            <ol class="breadcrumb">
+                                                <li><strong><span style="color: #27a0d7">设备参数</span></strong></li>
+                                            </ol>
+                                            <form class="form-inline" role="form" style="float: left; width: 100%" method="post" id="queryForm">
+                                                <div class="form-group">
+                                                    <label for="param_name">名称:</label> 
+                                                    <input type="text" class="form-control" name="param_name" id="param_name"  placeholder="请输入名称">
+                                                </div>
+                                                <div class="form-group">
+                                                    <button type="button" id="queryBtn" onclick="doQuery();" class="btn btn-primary">查询</button>
+                                                </div>
+                                                <div class="form-group btn-right">
+                                                    <button type="button" class="btn btn-primary" id="addBtn" onclick="addUser();">新增参数</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="container" style="width: 100%;padding:20px">
+                                            <table id="demo-table">
+                                            </table>
+                                        </div>
+
                             </div>
+                        </div>       
                     </div>
                 </div>
             </div>
     </div>
 </body>
+<script src="/vendor/jquery.min.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.js"></script>
+<script src="/js/bootstrap-table.js"></script>
+<script src="/js/bootstrap-table-locale-all.js"></script>
+<script src="/vendor/angular.min.js"></script>
+
+<script type="text/javascript">
+    var app = angular.module('myApp', []);
+    app.config(['$locationProvider', function($locationProvider) {  
+      $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false
+        });  
+    }]);
+    function doQuery(params){
+     $('#demo-table').bootstrapTable('refresh');    //刷新表格
+    }
+    
+ 
+    app.controller('myCtrl',['$scope', '$location','$http', function($scope,$location, $http) {
+        // var myUrl_deviceSystem = "http://localhost:3000/data/deviceBySystem?callback=JSON_CALLBACK";
+        // $http.jsonp(myUrl_deviceSystem).success(function(response){
+        //     var systemList = [];
+        //     response.forEach(function(responseE){
+        //         systemList.push(responseE)
+        //     })
+        //     $scope.systemList = systemList;
+        // })
+
+        var myUrl_deviceBySystem = "http://localhost:3000/data/device_by_system?callback=JSON_CALLBACK";
+        $http.jsonp(myUrl_deviceBySystem).success(function(response){
+            var deviceList = [];
+            response.forEach(function(responseE){
+                deviceList.push(responseE)
+            })
+            $scope.deviceList = deviceList;
+        })
+    
+    // var url = "user.do?method=listUsers&random="+Math.random();
+        var myUrl_paramsByDevice = "http://localhost:3000/data/params_by_device?callback=JSON_CALLBACK";
+        $http.jsonp(myUrl_paramsByDevice).success(function(response){
+            var paramList = [];
+            response.forEach(function(responseE){
+                paramList.push(responseE)
+            })
+            
+            var data = new Array();
+            paramList.forEach(function(list){  
+                data.push({id:list.no,name:list.param_name,value:list.param_value,remark:list.remark}); 
+            });
+            console.log(data)
+         
+            function queryParams(params) {
+                var param = {
+                    name : $("#param_name").val(),
+                    // limit : this.limit, // 页面大小
+                    // offset : this.offset, // 页码
+                    // pageindex : this.pageNumber,
+                    // pageSize : this.pageSize
+                }
+                return param;
+                } 
+            $('#demo-table').bootstrapTable({
+            // method:'POST',
+            // dataType:'json',
+            // contentType: "application/x-www-form-urlencoded",
+            // cache: false,
+            // striped: true,                              //是否显示行间隔色
+            // sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
+            // url:url,
+            // height: $(window).height() - 110,
+            // width:$(window).width(),
+            // showColumns:true,
+            // pagination:true,
+            queryParams : queryParams,
+            // minimumCountColumns:2,
+            // pageNumber:1,                       //初始化加载第一页，默认第一页
+            //        pageSize: 20,                       //每页的记录行数（*）
+            //       pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
+            //       uniqueId: "id",                     //每一行的唯一标识，一般为主键列
+            // showExport: true,                    
+            // exportDataType: 'all',
+            // responseHandler: responseHandler,
+            columns: [
+            // {
+            //     field: '',
+            //             title: 'Sort No.',
+            //             formatter: function (value, row, index) {
+            //             return index+1;
+            //      }
+            // },
+            {
+                field : 'id',
+                title : '参数ID',
+                align : 'center',
+                valign : 'middle',
+                sortable : true
+            }, {
+                field : 'name',
+                title : '参数名',
+                align : 'center',
+                valign : 'middle',
+                sortable : true
+            },  {
+                field : 'value',
+                title : '参数值',
+                align : 'center',
+                valign : 'middle',
+                sortable : true
+            }, {
+                field : 'remark',
+                title : '备注',
+                align : 'center',
+                valign : 'middle'
+            }],
+            data:data,
+        });
+
+
+        })
+      
+        }]);
+
+
+
+
+</script>
+
 </html>

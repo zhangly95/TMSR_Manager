@@ -1,8 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var pg1 = require('./pgconn');
-var path = require('path')
-var fs = require('fs')
+var path = require('path');
+var fs = require('fs');
+var pg2 = require('./pg');
 
 //遍历文件夹，获取所有文件夹里面的文件信息
 /*
@@ -217,6 +218,50 @@ router.get('/lf_primary_timeline/:post_name', function (req, res, next) {
   });
 
 
+
+});
+
+router.get('/device_system', function(req, res, next) {
+  // process.env.TZ = "Asia/Shanghai";
+  sql ="select * from system_list order by system_id asc";
+  pg2.query(sql, function (result) {
+  res.jsonp(result.rows);
+  // console.log(result.rows); 
+ 
+  });
+
+});
+
+router.get('/device_list', function(req, res, next) {
+  // process.env.TZ = "Asia/Shanghai";
+  sql ="select * from device_list order by device_id asc";
+  pg2.query(sql, function (result) {
+  res.jsonp(result.rows);
+  // console.log(result.rows); 
+ 
+  });
+
+});
+
+router.get('/device_by_system', function(req, res, next) {
+  // process.env.TZ = "Asia/Shanghai";
+  sql ="select * from device_list where system_id = 0 order by device_id asc";
+  pg2.query(sql, function (result) {
+  res.jsonp(result.rows);
+  // console.log(result.rows); 
+ 
+  });
+
+});
+
+router.get('/params_by_device', function(req, res, next) {
+  // process.env.TZ = "Asia/Shanghai";
+  sql ="select * from param_main where device_id = 0 order by index";
+  pg2.query(sql, function (result) {
+  res.jsonp(result.rows);
+  // console.log(result.rows); 
+ 
+  });
 
 });
 

@@ -31,6 +31,7 @@
     "serve-favicon": "~2.4.5"
   },
   "devDependencies": {
+    "angular-route": "^1.4.6",
     "gulp": "^4.0.0",
     "gulp-livereload": "^4.0.1"
   }
