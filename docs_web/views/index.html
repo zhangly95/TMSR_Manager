@@ -287,56 +287,8 @@
                                             <a href="/deviceOverview">超高温熔盐泵测试装置</a>
                                         </li>
                                         <li ng-repeat="y in systemList">
-                                           <a href="#/system/{{y.system_id}}">{{y.system_name}}</a>
+                                           <a href="/system/#{{y.system_id}}">{{y.system_name}}</a>
                                         </li>
-                                        <!-- <li>
-                                            <a href="/deviceOverview">超高温熔盐泵测试装置</a>
-                                        </li>
-                                        <li>
-                                            <a href="/deviceOverview">熔盐储罐及管路系统</a>
-                                        </li>
-                                        <li >
-                                            <a href="/list">伴热保温系统</a>
-                                        </li>
-                                        <li >
-                                            <a href="/detail">熔盐阀</a>
-                                        </li>
-                                        <li >
-                                            <a href="/detail">熔盐管路波纹管</a>
-                                        </li>
-                                        <li >
-                                            <a href="/detail">钢结构平台</a>
-                                        </li>
-                                        <li >
-                                            <a href="/detail">测试装置混净土基础</a>
-                                        </li>
-                                        <li >
-                                            <a href="/detail">机械设备安装</a>
-                                        </li>
-                                        <li >
-                                            <a href="/detail">真空系统</a>
-                                        </li>
-                                        <li >
-                                            <a href="/detail">在线净化器</a>
-                                        </li>
-                                        <li >
-                                            <a href="/detail">在线取样装置</a>
-                                        </li>
-                                        <li >
-                                            <a href="/detail">测量设备</a>
-                                        </li>
-                                        <li >
-                                            <a href="/detail">控制系统</a>
-                                        </li>
-                                        <li >
-                                            <a href="/detail">辅助配套设备</a>
-                                        </li>
-                                        <li >
-                                            <a href="/detail">气路系统</a>
-                                        </li>
-                                        <li >
-                                            <a href="/detail">熔盐</a>
-                                        </li> -->
                                     </ul>
                         </li>
 
@@ -867,20 +819,19 @@
       var app = angular.module('myApp', ['ngRoute']);
 
      // 配置动态路由
-      app.config(['$routeProvider', function ($routeProvider) {
-        $routeProvider
-            .when('/system/0', {//当解析到路径的时候，会调用viws/about.html模板和使用aboutCtrl控制器
-                templateUrl: '../views/system1.html',
-                controller: 'system1_ctrl'
-            })
+    //   app.config(['$routeProvider', function ($routeProvider) {
+    //     $routeProvider
+    //         .when('/system/0', {//当解析到路径的时候，会调用viws/about.html模板和使用aboutCtrl控制器
+    //             templateUrl: '../views/system1.html',
+    //             controller: 'system1_ctrl'
+    //         })
            
-      }]);
+    //   }]);
 
 
       app.controller('myCtrl', function($scope, $http) {   
       var myUrl = "http://10.10.2.29:3000/data/lf1?callback=JSON_CALLBACK";
       var myUrl_input = "http://10.10.2.29:3000/data/input_file?callback=JSON_CALLBACK";
-
 
       var myUrl_deviceSystem = "http://localhost:3000/data/device_system?callback=JSON_CALLBACK";
       $http.jsonp(myUrl_deviceSystem).success(function(response){
@@ -888,7 +839,6 @@
          response.forEach(function(responseE){
              systemList.push(responseE)
          })
-        //  console.log(systemList)
          $scope.systemList = systemList;
      })
 

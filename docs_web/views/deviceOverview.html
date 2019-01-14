@@ -281,7 +281,7 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                        <li>
+                        <li >
                             <a href="#">
                                 <i class="fa fa-dashboard fa-fw"></i>设备管理
                                 <span class="fa arrow"></span>
@@ -290,54 +290,11 @@
                                         <li>
                                             <a href="/deviceOverview">超高温熔盐泵测试装置</a>
                                         </li>
-                                        <li>
-                                            <a href="/deviceOverview">熔盐储罐及管路系统</a>
-                                        </li>
-                                        <li >
-                                            <a href="/list">伴热保温系统</a>
-                                        </li>
-                                        <li >
-                                            <a href="/detail">熔盐阀</a>
-                                        </li>
-                                        <li >
-                                            <a href="/detail">熔盐管路波纹管</a>
-                                        </li>
-                                        <li >
-                                            <a href="/detail">钢结构平台</a>
-                                        </li>
-                                        <li >
-                                            <a href="/detail">测试装置混净土基础</a>
-                                        </li>
-                                        <li >
-                                            <a href="/detail">机械设备安装</a>
-                                        </li>
-                                        <li >
-                                            <a href="/detail">真空系统</a>
-                                        </li>
-                                        <li >
-                                            <a href="/detail">在线净化器</a>
-                                        </li>
-                                        <li >
-                                            <a href="/detail">在线取样装置</a>
-                                        </li>
-                                        <li >
-                                            <a href="/detail">测量设备</a>
-                                        </li>
-                                        <li >
-                                            <a href="/detail">控制系统</a>
-                                        </li>
-                                        <li >
-                                            <a href="/detail">辅助配套设备</a>
-                                        </li>
-                                        <li >
-                                            <a href="/detail">气路系统</a>
-                                        </li>
-                                        <li >
-                                            <a href="/detail">熔盐</a>
+                                        <li ng-repeat="y in systemList">
+                                           <a href="/system/#{{y.system_id}}">{{y.system_name}}</a>
                                         </li>
                                     </ul>
                         </li>
-
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -408,8 +365,7 @@
                                             <div class="row pre-scrollable" style="max-height:450px" >
                                                 <ul class="list-group" ng-repeat="y in systemList">
                                                        
-                                                                <a href=`/deviceOverview/${y.system_id}`>{{y.system_name}}</a>
-                                                        
+                                                    <a href="/system/#{{y.system_id}}">{{y.system_name}}</a>
                                                         <!-- <a href="/system1" class="list-group-item active">熔盐储罐及管路系统</a>
                                                         <a href="#" class="list-group-item">伴热保温系统</a>
                                                         <a href="#" class="list-group-item">熔盐阀</a>

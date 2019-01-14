@@ -243,9 +243,9 @@ router.get('/device_list', function(req, res, next) {
 
 });
 
-router.get('/device_by_system', function(req, res, next) {
+router.get('/device_by_system/:system_id', function(req, res, next) {
   // process.env.TZ = "Asia/Shanghai";
-  sql ="select * from device_list where system_id = 0 order by device_id asc";
+  sql = 'select * from device_list where system_id = \''+req.params.system_id +'\' order by device_id asc;';
   pg2.query(sql, function (result) {
   res.jsonp(result.rows);
   // console.log(result.rows); 
@@ -260,6 +260,17 @@ router.get('/params_by_device', function(req, res, next) {
   pg2.query(sql, function (result) {
   res.jsonp(result.rows);
   // console.log(result.rows); 
+ 
+  });
+
+});
+
+router.get('/search_system/:id', function(req, res, next) {
+  // process.env.TZ = "Asia/Shanghai";
+  console.log(req.params.system_id)
+  sql = 'select * from system_list where system_id= \'' + req.params.id + '\' order by system_id ;';
+  pg2.query(sql, function (result) {
+  res.jsonp(result.rows);
  
   });
 

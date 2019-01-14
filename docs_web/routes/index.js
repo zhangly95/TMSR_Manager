@@ -9,8 +9,8 @@ router.get('/', function(req, res, next) {
 router.get('/deviceOverView', function(req, res, next) {
   res.render('deviceOverView', { title: '设备概览' });
 });
-router.get('/system1', function(req, res, next) {
-  res.render('system1', { title: '熔盐储罐与管路系统' });
+router.get('/system/', function(req, res, next) {
+  res.render('system1');
 });
 
 

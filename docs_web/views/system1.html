@@ -275,7 +275,7 @@
                                 </ul>
                                 <!-- /.nav-second-level -->
                             </li>
-                            <li>
+                            <li >
                                 <a href="#">
                                     <i class="fa fa-dashboard fa-fw"></i>设备管理
                                     <span class="fa arrow"></span>
@@ -284,50 +284,8 @@
                                             <li>
                                                 <a href="/deviceOverview">超高温熔盐泵测试装置</a>
                                             </li>
-                                            <li>
-                                                <a href="/deviceOverview">熔盐储罐及管路系统</a>
-                                            </li>
-                                            <li >
-                                                <a href="/list">伴热保温系统</a>
-                                            </li>
-                                            <li >
-                                                <a href="/detail">熔盐阀</a>
-                                            </li>
-                                            <li >
-                                                <a href="/detail">熔盐管路波纹管</a>
-                                            </li>
-                                            <li >
-                                                <a href="/detail">钢结构平台</a>
-                                            </li>
-                                            <li >
-                                                <a href="/detail">测试装置混净土基础</a>
-                                            </li>
-                                            <li >
-                                                <a href="/detail">机械设备安装</a>
-                                            </li>
-                                            <li >
-                                                <a href="/detail">真空系统</a>
-                                            </li>
-                                            <li >
-                                                <a href="/detail">在线净化器</a>
-                                            </li>
-                                            <li >
-                                                <a href="/detail">在线取样装置</a>
-                                            </li>
-                                            <li >
-                                                <a href="/detail">测量设备</a>
-                                            </li>
-                                            <li >
-                                                <a href="/detail">控制系统</a>
-                                            </li>
-                                            <li >
-                                                <a href="/detail">辅助配套设备</a>
-                                            </li>
-                                            <li >
-                                                <a href="/detail">气路系统</a>
-                                            </li>
-                                            <li >
-                                                <a href="/detail">熔盐</a>
+                                            <li ng-repeat="y in systemList">
+                                               <a href="/system/#{{y.system_id}}">{{y.system_name}}</a>
                                             </li>
                                         </ul>
                             </li>
@@ -341,7 +299,7 @@
             <div id="page-wrapper">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">熔盐储罐及管路系统</h1>
+                        <h1 class="page-header" ng-model = "system_title">{{system_title}}</h1>
                         <div class="col-lg-2">
                             <div class="row pre-scrollable" style="max-height:436px" >
                                 <ul class="list-group" ng-repeat="x in deviceList">
@@ -425,16 +383,22 @@
     
  
     app.controller('myCtrl',['$scope', '$location','$http', function($scope,$location, $http) {
-        // var myUrl_deviceSystem = "http://localhost:3000/data/deviceBySystem?callback=JSON_CALLBACK";
-        // $http.jsonp(myUrl_deviceSystem).success(function(response){
-        //     var systemList = [];
-        //     response.forEach(function(responseE){
-        //         systemList.push(responseE)
-        //     })
-        //     $scope.systemList = systemList;
-        // })
+        var myUrl_deviceSystem = "http://localhost:3000/data/device_system?callback=JSON_CALLBACK";
+        $http.jsonp(myUrl_deviceSystem).success(function(response){
+           var systemList = [];
+           response.forEach(function(responseE){
+               systemList.push(responseE)
+           })
+           $scope.systemList = systemList;
+       })
 
-        var myUrl_deviceBySystem = "http://localhost:3000/data/device_by_system?callback=JSON_CALLBACK";
+        var system_id = parseInt($location.hash());
+        var myUrl_searchSystem  = 'http://localhost:3000/data/search_system/' + system_id + '?callback=JSON_CALLBACK'
+            $http.jsonp(myUrl_searchSystem).success(function(response){
+                 $scope.system_title = response[0].system_name;
+            })
+
+        var myUrl_deviceBySystem = 'http://localhost:3000/data/device_by_system/'+system_id+'?callback=JSON_CALLBACK';
         $http.jsonp(myUrl_deviceBySystem).success(function(response){
             var deviceList = [];
             response.forEach(function(responseE){
@@ -455,7 +419,6 @@
             paramList.forEach(function(list){  
                 data.push({id:list.no,name:list.param_name,value:list.param_value,remark:list.remark}); 
             });
-            console.log(data)
          
             function queryParams(params) {
                 var param = {
