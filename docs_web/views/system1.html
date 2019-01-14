@@ -31,16 +31,6 @@
         <!-- Custom Fonts -->
         <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
       
-        
-
-        <script>
-          function  onHandleChangeDevice(n){
-             
-              document.getElementById("deviceImg").src = `/assets/${n}.jpg`;
-
-          }
-    
-        </script>
 </head>
 <body ng-app="myApp" ng-controller="myCtrl">
     <div id="wrapper">
@@ -301,9 +291,9 @@
                     <div class="col-lg-12">
                         <h1 class="page-header" ng-model = "system_title">{{system_title}}</h1>
                         <div class="col-lg-2">
-                            <div class="row pre-scrollable" style="max-height:436px" >
+                            <div class="row pre-scrollable" style="max-height:436px">
                                 <ul class="list-group" ng-repeat="x in deviceList">
-                                    <button class="list-group-item" onclick="onHandleChangeDevice(0)">{{x.device_name}}</button>
+                                    <button class="list-group-item" ng-click = "changeImg($index)">{{x.device_name}}</button>
                                     <!-- <button class="list-group-item active" onclick="onHandleChangeDevice(10)">熔盐罐</button>
                                     <button class="list-group-item" onclick="onHandleChangeDevice(0)">泵罐</button>
                                     <button class="list-group-item" onclick="onHandleChangeDevice(1)">转运罐</button>
@@ -317,17 +307,6 @@
                                     <button class="list-group-item" onclick="onHandleChangeDevice(9)">初步设计</button> -->
                                 </ul>   
                             </div>
-                            <!-- <div class="btn-group">
-                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                            熔盐罐 <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a onclick="onHandleChangeDevice(0)">泵罐</a></li>
-                                        <li><a onclick="onHandleChangeDevice(0)">泵罐</a></li>
-                                        <li><a onclick="onHandleChangeDevice(1)">转运罐</a></li>
-                                        <li> <a onclick="onHandleChangeDevice(2)">称量罐</a></li>
-                                    </ul>
-                            </div> -->
                         </div>
                         <div class="col-lg-10">
                             <div class="col-lg-4" style="margin:50px 10px 10px 200px">
@@ -338,7 +317,7 @@
                                             <ol class="breadcrumb">
                                                 <li><strong><span style="color: #27a0d7">设备参数</span></strong></li>
                                             </ol>
-                                            <form class="form-inline" role="form" style="float: left; width: 100%" method="post" id="queryForm">
+                                            <!-- <form class="form-inline" role="form" style="float: left; width: 100%" method="post" id="queryForm">
                                                 <div class="form-group">
                                                     <label for="param_name">名称:</label> 
                                                     <input type="text" class="form-control" name="param_name" id="param_name"  placeholder="请输入名称">
@@ -349,7 +328,7 @@
                                                 <div class="form-group btn-right">
                                                     <button type="button" class="btn btn-primary" id="addBtn" onclick="addUser();">新增参数</button>
                                                 </div>
-                                            </form>
+                                            </form> -->
                                         </div>
                                         <div class="container" style="width: 100%;padding:20px">
                                             <table id="demo-table">
@@ -380,7 +359,6 @@
     function doQuery(params){
      $('#demo-table').bootstrapTable('refresh');    //刷新表格
     }
-    
  
     app.controller('myCtrl',['$scope', '$location','$http', function($scope,$location, $http) {
         var myUrl_deviceSystem = "http://localhost:3000/data/device_system?callback=JSON_CALLBACK";
@@ -391,6 +369,29 @@
            })
            $scope.systemList = systemList;
        })
+    
+    $scope.changeImg = function (n){
+        document.getElementById("deviceImg").src = `/assets/${n}.jpg`;
+        var device_id = n;
+        var myUrl_searchParams = 'http://localhost:3000/data/search_params/'+device_id+'?callback=JSON_CALLBACK';
+        $http.jsonp(myUrl_searchParams).success(function(response){
+            var paramList = [];
+            response.forEach(function(responseE){
+                paramList.push(responseE)
+            })
+            
+            var newData = new Array();
+            paramList.forEach(function(list){  
+                newData.push({id:list.no,name:list.param_name,value:list.param_value,remark:list.remark}); 
+            });
+            var opt ={
+                data:newData
+            }
+            $('#demo-table').bootstrapTable('refresh',opt);
+        })
+       
+    }
+        
 
         var system_id = parseInt($location.hash());
         var myUrl_searchSystem  = 'http://localhost:3000/data/search_system/' + system_id + '?callback=JSON_CALLBACK'
@@ -420,29 +421,21 @@
                 data.push({id:list.no,name:list.param_name,value:list.param_value,remark:list.remark}); 
             });
          
-            function queryParams(params) {
-                var param = {
-                    name : $("#param_name").val(),
-                    // limit : this.limit, // 页面大小
-                    // offset : this.offset, // 页码
-                    // pageindex : this.pageNumber,
-                    // pageSize : this.pageSize
-                }
-                return param;
-                } 
             $('#demo-table').bootstrapTable({
+                locale:'zh-CN',
             // method:'POST',
             // dataType:'json',
             // contentType: "application/x-www-form-urlencoded",
             // cache: false,
-            // striped: true,                              //是否显示行间隔色
+            striped: true,                              //是否显示行间隔色
             // sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
             // url:url,
             // height: $(window).height() - 110,
             // width:$(window).width(),
-            // showColumns:true,
-            // pagination:true,
-            queryParams : queryParams,
+            showColumns:true,
+            pagination:true,
+            pageSize:3,
+            // queryParams : queryParams,
             // minimumCountColumns:2,
             // pageNumber:1,                       //初始化加载第一页，默认第一页
             //        pageSize: 20,                       //每页的记录行数（*）
@@ -451,6 +444,8 @@
             // showExport: true,                    
             // exportDataType: 'all',
             // responseHandler: responseHandler,
+            
+            search: true,
             columns: [
             // {
             //     field: '',
@@ -485,15 +480,9 @@
             }],
             data:data,
         });
-
-
         })
       
         }]);
-
-
-
-
 </script>
 
 </html>

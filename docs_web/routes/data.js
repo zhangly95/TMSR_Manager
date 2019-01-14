@@ -276,4 +276,15 @@ router.get('/search_system/:id', function(req, res, next) {
 
 });
 
+router.get('/search_params/:id', function(req, res, next) {
+  // process.env.TZ = "Asia/Shanghai";
+  console.log(req.params.system_id)
+  sql = 'select * from param_main where device_id= \'' + req.params.id + '\' order by index ;';
+  pg2.query(sql, function (result) {
+  res.jsonp(result.rows);
+ 
+  });
+
+});
+
 module.exports = router;
