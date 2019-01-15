@@ -9,8 +9,8 @@ router.get('/', function(req, res, next) {
 router.get('/deviceOverView', function(req, res, next) {
   res.render('deviceOverView', { title: '设备概览' });
 });
-router.get('/system/', function(req, res, next) {
-  res.render('system1');
+router.get('/system/:system_id', function(req, res, next) {
+  res.render('system1',{system_id:req.params.system_id});
 });
 
 

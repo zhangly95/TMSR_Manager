@@ -270,16 +270,15 @@
                                     <i class="fa fa-dashboard fa-fw"></i>设备管理
                                     <span class="fa arrow"></span>
                                 </a>
-                                        <ul class="nav nav-second-level">
-                                            <li>
-                                                <a href="/deviceOverview">超高温熔盐泵测试装置</a>
-                                            </li>
-                                            <li ng-repeat="y in systemList">
-                                               <a href="/system/#{{y.system_id}}">{{y.system_name}}</a>
-                                            </li>
-                                        </ul>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="/deviceOverview">超高温熔盐泵测试装置</a>
+                                    </li>
+                                    <li ng-repeat="y in systemList">
+                                        <a href="/system/{{y.system_id}}">{{y.system_name}}</a>
+                                    </li>
+                                </ul>
                             </li>
-    
                         </ul>
                     </div>
                     <!-- /.sidebar-collapse -->
@@ -331,10 +330,8 @@
                                             </form> -->
                                         </div>
                                         <div class="container" style="width: 100%;padding:20px">
-                                            <table id="demo-table">
-                                            </table>
+                                            <table id="demo-table"></table>
                                         </div>
-
                             </div>
                         </div>       
                     </div>
@@ -350,17 +347,16 @@
 
 <script type="text/javascript">
     var app = angular.module('myApp', []);
-    app.config(['$locationProvider', function($locationProvider) {  
-      $locationProvider.html5Mode({
-        enabled: true,
-        requireBase: false
-        });  
-    }]);
-    function doQuery(params){
-     $('#demo-table').bootstrapTable('refresh');    //刷新表格
-    }
- 
-    app.controller('myCtrl',['$scope', '$location','$http', function($scope,$location, $http) {
+    // app.config(['$locationProvider', function($locationProvider) {  
+    //   $locationProvider.html5Mode({
+    //     enabled: true,
+    //     requireBase: false
+    //     });  
+    // }]);
+    // function doQuery(params){
+    //  $('#demo-table').bootstrapTable('refresh');    //刷新表格
+    // }
+    app.controller('myCtrl', function($scope, $http) {
         var myUrl_deviceSystem = "http://localhost:3000/data/device_system?callback=JSON_CALLBACK";
         $http.jsonp(myUrl_deviceSystem).success(function(response){
            var systemList = [];
@@ -369,31 +365,7 @@
            })
            $scope.systemList = systemList;
        })
-    
-    $scope.changeImg = function (n){
-        document.getElementById("deviceImg").src = `/assets/${n}.jpg`;
-        var device_id = n;
-        var myUrl_searchParams = 'http://localhost:3000/data/search_params/'+device_id+'?callback=JSON_CALLBACK';
-        $http.jsonp(myUrl_searchParams).success(function(response){
-            var paramList = [];
-            response.forEach(function(responseE){
-                paramList.push(responseE)
-            })
-            
-            var newData = new Array();
-            paramList.forEach(function(list){  
-                newData.push({id:list.no,name:list.param_name,value:list.param_value,remark:list.remark}); 
-            });
-            var opt ={
-                data:newData
-            }
-            $('#demo-table').bootstrapTable('refresh',opt);
-        })
-       
-    }
-        
-
-        var system_id = parseInt($location.hash());
+        var system_id = <%= system_id %>;
         var myUrl_searchSystem  = 'http://localhost:3000/data/search_system/' + system_id + '?callback=JSON_CALLBACK'
             $http.jsonp(myUrl_searchSystem).success(function(response){
                  $scope.system_title = response[0].system_name;
@@ -407,10 +379,13 @@
             })
             $scope.deviceList = deviceList;
         })
-    
-    // var url = "user.do?method=listUsers&random="+Math.random();
-        var myUrl_paramsByDevice = "http://localhost:3000/data/params_by_device?callback=JSON_CALLBACK";
-        $http.jsonp(myUrl_paramsByDevice).success(function(response){
+
+        $scope.changeImg = function (n){
+        document.getElementById("deviceImg").src = `/assets/${n}.jpg`;
+        var device_id = $scope.deviceList[n].device_id;
+        // console.log(device_id)
+        var myUrl_searchParams = 'http://localhost:3000/data/search_params/'+device_id+'?callback=JSON_CALLBACK';
+        $http.jsonp(myUrl_searchParams).success(function(response){
             var paramList = [];
             response.forEach(function(responseE){
                 paramList.push(responseE)
@@ -418,42 +393,39 @@
             
             var data = new Array();
             paramList.forEach(function(list){  
-                data.push({id:list.no,name:list.param_name,value:list.param_value,remark:list.remark}); 
+                data.push({id:list.no,name:list.param_name,value:list.param_value,unit:list.param_unit,remark:list.remark}); 
             });
-         
+            console.log(data);
             $('#demo-table').bootstrapTable({
-                locale:'zh-CN',
-            // method:'POST',
-            // dataType:'json',
-            // contentType: "application/x-www-form-urlencoded",
-            // cache: false,
-            striped: true,                              //是否显示行间隔色
-            // sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
-            // url:url,
-            // height: $(window).height() - 110,
-            // width:$(window).width(),
+            locale:'zh-CN', 
+            // showRefresh:true,
+            striped: true, 
+            cache: false,                              //是否显示行间隔色
             showColumns:true,
             pagination:true,
             pageSize:3,
-            // queryParams : queryParams,
-            // minimumCountColumns:2,
-            // pageNumber:1,                       //初始化加载第一页，默认第一页
-            //        pageSize: 20,                       //每页的记录行数（*）
-            //       pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
-            //       uniqueId: "id",                     //每一行的唯一标识，一般为主键列
-            // showExport: true,                    
-            // exportDataType: 'all',
-            // responseHandler: responseHandler,
-            
             search: true,
+            // ajax:function(request) {
+            //     $.ajax({
+            //       url:'http://localhost:3000/data/search_params/'+device_id+'?callback=JSON_CALLBACK',
+            //       type:"GET",
+            //       dataType:"json",
+            //     //   jsonp:'callback',
+            //       data:{},
+            //       success:function(data){
+            //         // request.success({
+            //         //   row : data
+            //         // });
+            //         console.log(data)
+            //         $('#dataTable table').bootstrapTable('load', data);
+            //       },
+            //       error:function(error){
+            //         console.log(error);
+            //       }
+            //     })
+            //   },
+        
             columns: [
-            // {
-            //     field: '',
-            //             title: 'Sort No.',
-            //             formatter: function (value, row, index) {
-            //             return index+1;
-            //      }
-            // },
             {
                 field : 'id',
                 title : '参数ID',
@@ -473,6 +445,13 @@
                 valign : 'middle',
                 sortable : true
             }, {
+                field : 'unit',
+                title : '单位',
+                align : 'center',
+                valign : 'middle',
+                sortable : true
+            }, 
+            {
                 field : 'remark',
                 title : '备注',
                 align : 'center',
@@ -480,9 +459,11 @@
             }],
             data:data,
         });
-        })
-      
-        }]);
+            $('#demo-table').bootstrapTable('refresh',data);
+            console.log(111)
+        })     
+    }
+});
 </script>
 
 </html>

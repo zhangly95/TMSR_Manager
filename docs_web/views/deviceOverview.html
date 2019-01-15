@@ -291,7 +291,7 @@
                                             <a href="/deviceOverview">超高温熔盐泵测试装置</a>
                                         </li>
                                         <li ng-repeat="y in systemList">
-                                           <a href="/system/#{{y.system_id}}">{{y.system_name}}</a>
+                                            <a href="/system/{{y.system_id}}">{{y.system_name}}</a>
                                         </li>
                                     </ul>
                         </li>
@@ -363,23 +363,8 @@
                                         </div>
                                         <div class="col-lg-2">
                                             <div class="row pre-scrollable" style="max-height:450px" >
-                                                <ul class="list-group" ng-repeat="y in systemList">
-                                                       
-                                                    <a href="/system/#{{y.system_id}}">{{y.system_name}}</a>
-                                                        <!-- <a href="/system1" class="list-group-item active">熔盐储罐及管路系统</a>
-                                                        <a href="#" class="list-group-item">伴热保温系统</a>
-                                                        <a href="#" class="list-group-item">熔盐阀</a>
-                                                        <a href="#" class="list-group-item">熔盐管路波纹管</a>
-                                                        <a href="#" class="list-group-item">测试装置混凝土基础</a>
-                                                        <a href="#" class="list-group-item">机械设备安装</a>
-                                                        <a href="#" class="list-group-item">真空系统</a>
-                                                        <a href="#" class="list-group-item">在线净化器</a>
-                                                        <a href="#" class="list-group-item">在线取样装置</a>
-                                                        <a href="#" class="list-group-item">测量设备</a>
-                                                        <a href="#" class="list-group-item">控制系统</a>
-                                                        <a href="#" class="list-group-item">辅助配套设备</a>
-                                                        <a href="#" class="list-group-item">气路系统</a>
-                                                        <a href="#" class="list-group-item">熔盐</a> -->
+                                                <ul class="list-group" ng-repeat="y in systemList">       
+                                                    <a href="/system/{{y.system_id}}">{{y.system_name}}</a>
                                                 </ul>
                                             </div>
                                         </div>
