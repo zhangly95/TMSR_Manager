@@ -229,28 +229,29 @@
                             </div>
                             <!-- /input-group -->
                         </li>
-                        <li>
-                            <a href="/"><i class="fa fa-dashboard fa-fw"></i>LF1 文件管理</a>
-                        </li>
-                        <li>
-                            <a href=" /lfcontact">
-                                <i class="fa fa-edit fa-fw"></i>工作联系单</a>
-                        </li>
-                        <li>
-                            <a href="/lf1_note">
-                                <i class="fa fa-edit fa-fw"></i>技术通知单</a>
-                        </li>
-                        <li>
-                            <a href="/lf1_concept_design"><i class="fa fa-bar-chart-o fa-fw"></i>概念设计文件</a>
-                   
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="/lf1_scheme_design">
-                                <i class="fa fa-bar-chart-o fa-fw"></i>方案设计文件</a>
-                        
-                            <!-- /.nav-second-level -->
-                        </li>
+                        <li >
+                                <a href="#">
+                                    <i class="fa fa-edit fa-fw"></i>文件管理
+                                    <span class="fa arrow"></span>
+                                </a>
+                                        <ul class="nav nav-second-level">
+                                            <li>
+                                                <a href="/">文件概览</a>
+                                            </li>
+                                            <li>
+                                                <a href=" /lfcontact">工作联系单</a>
+                                            </li>
+                                            <li>
+                                                <a href="/lf1_note">技术通知单</a>
+                                            </li>
+                                            <li>
+                                                <a href=" /lf1_concept_design">概念设计文件</a>
+                                            </li>
+                                            <li>
+                                                <a href=" /lf1_scheme_design">方案设计文件</a>
+                                            </li>
+                                        </ul>
+                            </li>
 
                         <li>
                             <a href="lf1_primary"><i class="fa fa-wrench fa-fw"></i>初步设计文件<span class="fa arrow"></span></a>
@@ -273,6 +274,20 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        <li >
+                                <a href="/">
+                                    <i class="fa fa-dashboard fa-fw"></i>设备管理
+                                    <span class="fa arrow"></span>
+                                </a>
+                                        <ul class="nav nav-second-level">
+                                            <li>
+                                                <a href="/deviceOverview">超高温熔盐泵测试装置</a>
+                                            </li>
+                                            <li ng-repeat="y in systemList">
+                                               <a href="/system/{{y.system_id}}">{{y.system_name}}</a>
+                                            </li>
+                                        </ul>
+                            </li>
 
                     </ul>
                 </div>
@@ -352,6 +367,15 @@
             app.controller('myCtrl', function ($scope, $http) {
                  var myUrl_note = "http://10.10.2.29:3000/data/lf1_note?callback=JSON_CALLBACK";
                  var myUrl = "http://10.10.2.29:3000/data/lf1?callback=JSON_CALLBACK";
+
+                 var myUrl_deviceSystem = "http://localhost:3000/data/device_system?callback=JSON_CALLBACK";
+                    $http.jsonp(myUrl_deviceSystem).success(function(response){
+                        var systemList = [];
+                        response.forEach(function(responseE){
+                            systemList.push(responseE)
+                        })
+                        $scope.systemList = systemList;
+                    })
 
                  $http.jsonp(myUrl_note).success(function (response) {
                      var data = new Array();
