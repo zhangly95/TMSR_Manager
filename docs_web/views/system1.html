@@ -351,123 +351,95 @@
 
 <script type="text/javascript">
     var app = angular.module('myApp', []);
-    // app.config(['$locationProvider', function($locationProvider) {  
-    //   $locationProvider.html5Mode({
-    //     enabled: true,
-    //     requireBase: false
-    //     });  
-    // }]);
-    // function doQuery(params){
-    //  $('#demo-table').bootstrapTable('refresh');    //刷新表格
-    // }
-    app.controller('myCtrl', function($scope, $http) {
-        var myUrl_deviceSystem = "http://localhost:3000/data/device_system?callback=JSON_CALLBACK";
-        $http.jsonp(myUrl_deviceSystem).success(function(response){
-           var systemList = [];
-           response.forEach(function(responseE){
-               systemList.push(responseE)
-           })
-           $scope.systemList = systemList;
-       })
-        var system_id = <%= system_id %>;
-        var myUrl_searchSystem  = 'http://localhost:3000/data/search_system/' + system_id + '?callback=JSON_CALLBACK'
-            $http.jsonp(myUrl_searchSystem).success(function(response){
-                 $scope.system_title = response[0].system_name;
+        app.controller('myCtrl', function ($scope, $http) {
+            var myUrl_deviceSystem = "http://localhost:3000/data/device_system?callback=JSON_CALLBACK";
+            $http.jsonp(myUrl_deviceSystem).success(function (response) {
+                var systemList = [];
+                response.forEach(function (responseE) {
+                    systemList.push(responseE)
+                })
+                $scope.systemList = systemList;
+            })
+            var system_id = <%= system_id %>;
+            var myUrl_searchSystem = 'http://localhost:3000/data/search_system/' + system_id + '?callback=JSON_CALLBACK'
+            $http.jsonp(myUrl_searchSystem).success(function (response) {
+                $scope.system_title = response[0].system_name;
             })
 
-        var myUrl_deviceBySystem = 'http://localhost:3000/data/device_by_system/'+system_id+'?callback=JSON_CALLBACK';
-        $http.jsonp(myUrl_deviceBySystem).success(function(response){
-            var deviceList = [];
-            response.forEach(function(responseE){
-                deviceList.push(responseE)
+            var myUrl_deviceBySystem = 'http://localhost:3000/data/device_by_system/' + system_id + '?callback=JSON_CALLBACK';
+            $http.jsonp(myUrl_deviceBySystem).success(function (response) {
+                var deviceList = [];
+                response.forEach(function (responseE) {
+                    deviceList.push(responseE)
+                })
+                $scope.deviceList = deviceList;
             })
-            $scope.deviceList = deviceList;
-        })
 
-        $scope.changeImg = function (n){
-        document.getElementById("deviceImg").src = `/assets/${n}.jpg`;
-        var device_id = $scope.deviceList[n].device_id;
-        // console.log(device_id)
-        var myUrl_searchParams = 'http://localhost:3000/data/search_params/'+device_id+'?callback=JSON_CALLBACK';
-        $http.jsonp(myUrl_searchParams).success(function(response){
-            var paramList = [];
-            response.forEach(function(responseE){
-                paramList.push(responseE)
-            })
-            
-            var data = new Array();
-            paramList.forEach(function(list){  
-                data.push({id:list.no,name:list.param_name,value:list.param_value,unit:list.param_unit,remark:list.remark}); 
-            });
-            console.log(data);
-            $('#demo-table').bootstrapTable({
-            locale:'zh-CN', 
-            // showRefresh:true,
-            striped: true, 
-            cache: false,                              //是否显示行间隔色
-            showColumns:true,
-            pagination:true,
-            pageSize:3,
-            search: true,
-            // ajax:function(request) {
-            //     $.ajax({
-            //       url:'http://localhost:3000/data/search_params/'+device_id+'?callback=JSON_CALLBACK',
-            //       type:"GET",
-            //       dataType:"json",
-            //     //   jsonp:'callback',
-            //       data:{},
-            //       success:function(data){
-            //         // request.success({
-            //         //   row : data
-            //         // });
-            //         console.log(data)
-            //         $('#dataTable table').bootstrapTable('load', data);
-            //       },
-            //       error:function(error){
-            //         console.log(error);
-            //       }
-            //     })
-            //   },
-        
-            columns: [
-            {
-                field : 'id',
-                title : '参数ID',
-                align : 'center',
-                valign : 'middle',
-                sortable : true
-            }, {
-                field : 'name',
-                title : '参数名',
-                align : 'center',
-                valign : 'middle',
-                sortable : true
-            },  {
-                field : 'value',
-                title : '参数值',
-                align : 'center',
-                valign : 'middle',
-                sortable : true
-            }, {
-                field : 'unit',
-                title : '单位',
-                align : 'center',
-                valign : 'middle',
-                sortable : true
-            }, 
-            {
-                field : 'remark',
-                title : '备注',
-                align : 'center',
-                valign : 'middle'
-            }],
-            data:data,
+        $scope.changeImg = function (n) {
+                document.getElementById("deviceImg").src = `/assets/${n}.jpg`;
+                var device_id = $scope.deviceList[n].device_id;
+                // console.log(device_id)
+                var myUrl_searchParams = 'http://localhost:3000/data/search_params/' + device_id + '?callback=JSON_CALLBACK';
+                $http.jsonp(myUrl_searchParams).success(function (response) {
+                    var paramList = [];
+                    response.forEach(function (responseE) {
+                        paramList.push(responseE)
+                    })
+
+                    var data = new Array();
+                    paramList.forEach(function (list) {
+                        data.push({ id: list.no, name: list.param_name, value: list.param_value, unit: list.param_unit, remark: list.remark });
+                    });
+                    console.log(data);
+                    $('#demo-table').bootstrapTable({
+                        locale: 'zh-CN',
+                        // showRefresh:true,
+                        striped: true,
+                        cache: false,                              //是否显示行间隔色
+                        showColumns: true,
+                        pagination: true,
+                        pageSize: 3,
+                        search: true,
+
+                        columns: [
+                            {
+                                field: 'id',
+                                title: '参数ID',
+                                align: 'center',
+                                valign: 'middle',
+                                sortable: true
+                            }, {
+                                field: 'name',
+                                title: '参数名',
+                                align: 'center',
+                                valign: 'middle',
+                                sortable: true
+                            }, {
+                                field: 'value',
+                                title: '参数值',
+                                align: 'center',
+                                valign: 'middle',
+                                sortable: true
+                            }, {
+                                field: 'unit',
+                                title: '单位',
+                                align: 'center',
+                                valign: 'middle',
+                                sortable: true
+                            },
+                            {
+                                field: 'remark',
+                                title: '备注',
+                                align: 'center',
+                                valign: 'middle'
+                            }],
+                        data: data,
+                    });
+                    $('#demo-table').bootstrapTable('refresh', data);
+                    console.log(111)
+                })
+            }
         });
-            $('#demo-table').bootstrapTable('refresh',data);
-            console.log(111)
-        })     
-    }
-});
 </script>
 
 </html>
