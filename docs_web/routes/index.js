@@ -16,6 +16,13 @@ router.get('/login', function(req, res, next) {
   res.render('login', { title: 'TMSR-核能管理系统' });
 });
 
+router.get('/signalSearch', function(req, res, next) {
+  res.render('signalSearch', { title: 'TMSR-核能管理系统' });
+});
+router.get('/signalPaint', function(req, res, next) {
+  res.render('signalPaint', { title: 'TMSR-核能管理系统' });
+});
+
 
 
 router.get('/lf1_primary', function(req, res, next) {

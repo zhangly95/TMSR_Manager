@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>TMSR Documents - 熔盐泵实验平台文档管理系统</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <link href="/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="/vendor/morrisjs/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="/vendor/echarts.min.js"></script> 
+
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="">TMSR Documents v2.0</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-tasks">
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong> 堆物理</strong>
+                                        <span class="pull-right text-muted">100% Complete</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                            <span class="sr-only">100% Complete (success)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong>安全分析</strong>
+                                        <span class="pull-right text-muted">20% Complete</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                                            <span class="sr-only">20% Complete</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong>堆本体</strong>
+                                        <span class="pull-right text-muted">60% Complete</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                            <span class="sr-only">60% Complete (warning)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong>熔盐回路</strong>
+                                        <span class="pull-right text-muted">80% Complete</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                                            <span class="sr-only">80% Complete (danger)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a class="text-center" href="#">
+                                <strong>See All Tasks</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-tasks -->
+                </li>
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-alerts">
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-comment fa-fw"></i> New Comment
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                    <span class="pull-right text-muted small">12 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-envelope fa-fw"></i> Message Sent
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-tasks fa-fw"></i> New Task
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a class="text-center" href="#">
+                                <strong>See All Alerts</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-alerts -->
+                </li>
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                        <li >
+                            <a href="/">
+                                <i class="fa fa-edit fa-fw"></i>文件管理
+                                <span class="fa arrow"></span>
+                            </a>
+                                    <ul class="nav nav-second-level">
+                                        <!-- <li>
+                                            <a href="/">文件概览</a>
+                                        </li> -->
+                                        <li>
+                                            <a href=" /lfcontact">工作联系单</a>
+                                        </li>
+                                        <li>
+                                            <a href="/lf1_note">技术通知单</a>
+                                        </li>
+                                        <li>
+                                            <a href=" /lf1_concept_design">概念设计文件</a>
+                                        </li>
+                                        <li>
+                                            <a href=" /lf1_scheme_design">方案设计文件</a>
+                                        </li>
+                                    </ul>
+                        </li>
+                        <!-- <li>
+                            <a href="/"><i class="fa fa-dashboard fa-fw"></i>LF1 文件管理</a>
+                        </li>
+                        <li>
+                            <a href=" /lfcontact">
+                                <i class="fa fa-edit fa-fw"></i>工作联系单</a>
+                        </li>
+                        <li>
+                            <a href="/lf1_note">
+                                <i class="fa fa-edit fa-fw"></i>技术通知单</a>
+                        </li>
+                        <li>
+                            <a href="/lf1_concept_design"><i class="fa fa-bar-chart-o fa-fw"></i>概念设计文件</a>
+                   
+                            <!-- /.nav-second-level -->
+                        <!-- </li>
+                        <li>
+                            <a href="/lf1_scheme_design">
+                                <i class="fa fa-bar-chart-o fa-fw"></i>方案设计文件</a> -->
+                        
+                            <!-- /.nav-second-level -->
+                        <!-- </li> -->
+
+                        <li>
+                            <a href="/lf1_primary"><i class="fa fa-wrench fa-fw"></i>初步设计文件<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li ng-repeat="x in systems">
+                                        <a href="/proto/{{x}}">{{x}}</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-wrench fa-fw"></i>施工图设计文件
+                                <span class="fa arrow"></span>
+                            </a>
+                            <ul class="nav nav-second-level">
+                                <li ng-repeat="x in systems">
+                                    <a href="/const/{{x}}">{{x}}</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li >
+                            <a href="/">
+                                <i class="fa fa-dashboard fa-fw"></i>设备管理
+                                <span class="fa arrow"></span>
+                            </a>
+                                    <ul class="nav nav-second-level">
+                                        <li>
+                                            <a href="/deviceOverview">超高温熔盐泵测试装置</a>
+                                        </li>
+                                        <li ng-repeat="y in systemList">
+                                           <a href="/system/{{y.system_id}}">{{y.system_name}}</a>
+                                        </li>
+                                    </ul>
+                        </li>
+                        <li >
+                            <a href="/">
+                                <i class="fa fa-dashboard fa-fw"></i>动态信息管理
+                                <span class="fa arrow"></span>
+                            </a>
+                                    <ul class="nav nav-second-level">
+                                        <!-- <li>
+                                            <a href="/deviceOverview">超高温熔盐泵测试装置</a>
+                                        </li> -->
+                                        <!-- <li ng-repeat="y in systemList">
+                                           <a href="/system/{{y.system_id}}">{{y.system_name}}</a>
+                                        </li> -->
+                                        <li>
+                                            <a href="/signalSearch">动态信息查询</a>
+                                        </li>
+                                        <li>
+                                            <a href="/signalPaint">动态信息绘图</a>
+                                        </li>
+                                    </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">熔盐泵 设备动态信息管理</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> 动态信号变化绘图-按设备
+                            <div class="pull-right">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                        功率值 {{total_num}}
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right" role="menu">
+                                            <li ng-repeat="x in systems"><a href="/proto/{{x}}">{{x}}</a></li>    
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="panel-body">
+                            <div id="container" style="height:600px"> </div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                
+                </div>
+                <div class="col-lg-6">
+                       
+                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="processonSvg1000" viewBox="340.0138854980469 136.31448364257812 719.6253204345703 322.71675872802734" width="719.6253204345703" height="322.71675872802734"><defs id="ProcessOnDefs1001"><marker id="ProcessOnMarker1029" markerUnits="userSpaceOnUse" orient="auto" markerWidth="16.23606797749979" markerHeight="10.550836550532098" viewBox="-1.0 -1.3763819204711736 16.23606797749979 10.550836550532098" refX="-1.0" refY="3.8990363547948754"><path id="ProcessOnPath1030" d="M12.0 3.8990363547948754L0.0 7.798072709589751V0.0Z" stroke="#323232" stroke-width="2.0" fill="#323232" transform="matrix(1.0,0.0,0.0,1.0,0.0,0.0)"/></marker><marker id="ProcessOnMarker1033" markerUnits="userSpaceOnUse" orient="auto" markerWidth="16.23606797749979" markerHeight="10.550836550532098" viewBox="-1.0 -1.3763819204711736 16.23606797749979 10.550836550532098" refX="-1.0" refY="3.8990363547948754"><path id="ProcessOnPath1034" d="M12.0 3.8990363547948754L0.0 7.798072709589751V0.0Z" stroke="#323232" stroke-width="2.0" fill="#323232" transform="matrix(1.0,0.0,0.0,1.0,0.0,0.0)"/></marker><marker id="ProcessOnMarker1037" markerUnits="userSpaceOnUse" orient="auto" markerWidth="16.23606797749979" markerHeight="10.550836550532098" viewBox="-1.0 -1.3763819204711736 16.23606797749979 10.550836550532098" refX="-1.0" refY="3.8990363547948754"><path id="ProcessOnPath1038" d="M12.0 3.8990363547948754L0.0 7.798072709589751V0.0Z" stroke="#323232" stroke-width="2.0" fill="#323232" transform="matrix(1.0,0.0,0.0,1.0,0.0,0.0)"/></marker></defs><g id="ProcessOnG1002"><path id="ProcessOnPath1003" d="M340.0138854980469 136.31448364257812H1059.6392059326172V459.03124237060547H340.0138854980469V136.31448364257812Z" fill="none"/><g id="ProcessOnG1004"><g id="ProcessOnG1005" transform="matrix(1.0,0.0,0.0,1.0,360.0138854980469,163.03124237060547)" opacity="1.0"><path id="ProcessOnPath1006" d="M0.0 34.5Q126.5 -34.5 253.0 34.5L253.0 276.0L0.0 276.0L0.0 34.5Z" stroke="#323232" stroke-width="2.0" stroke-dasharray="none" opacity="1.0" fill="#ffffff"/><g id="ProcessOnG1007" transform="matrix(1.0,0.0,0.0,1.0,10.0,129.875)"><text id="ProcessOnText1008" fill="#000000" font-size="13" x="115.5" y="13.325" font-family="微软雅黑" font-weight="normal" font-style="normal" text-decoration="none" family="微软雅黑" text-anchor="middle" size="13">堆本体</text></g></g><g id="ProcessOnG1009" transform="matrix(1.0,0.0,0.0,1.0,622.0028533935547,197.03124237060547)" opacity="1.0"><path id="ProcessOnPath1010" d="M0.0 4.0Q0.0 0.0 4.0 0.0L35.597137451171875 0.0Q39.597137451171875 0.0 39.597137451171875 4.0L39.597137451171875 180.16875839233398Q39.597137451171875 184.16875839233398 35.597137451171875 184.16875839233398L4.0 184.16875839233398Q0.0 184.16875839233398 0.0 180.16875839233398Z" stroke="#323232" stroke-width="2.0" stroke-dasharray="none" opacity="1.0" fill="#ffffff"/><g id="ProcessOnG1011" transform="matrix(1.0,0.0,0.0,1.0,10.0,51.45937919616699)"><text id="ProcessOnText1012" fill="#000000" font-size="13" x="8.798568725585938" y="13.325" font-family="微软雅黑" font-weight="normal" font-style="normal" text-decoration="none" family="微软雅黑" text-anchor="middle" size="13">蒸</text><text id="ProcessOnText1013" fill="#000000" font-size="13" x="8.798568725585938" y="29.575" font-family="微软雅黑" font-weight="normal" font-style="normal" text-decoration="none" family="微软雅黑" text-anchor="middle" size="13">汽</text><text id="ProcessOnText1014" fill="#000000" font-size="13" x="8.798568725585938" y="45.825" font-family="微软雅黑" font-weight="normal" font-style="normal" text-decoration="none" family="微软雅黑" text-anchor="middle" size="13">发</text><text id="ProcessOnText1015" fill="#000000" font-size="13" x="8.798568725585938" y="62.075" font-family="微软雅黑" font-weight="normal" font-style="normal" text-decoration="none" family="微软雅黑" text-anchor="middle" size="13">生</text><text id="ProcessOnText1016" fill="#000000" font-size="13" x="8.798568725585938" y="78.325" font-family="微软雅黑" font-weight="normal" font-style="normal" text-decoration="none" family="微软雅黑" text-anchor="middle" size="13">器</text></g></g><g id="ProcessOnG1017" transform="matrix(1.0,0.0,0.0,1.0,944.5999908447266,313.5999984741211)" opacity="1.0"><path id="ProcessOnPath1018" d="M37.0 0.0L0.0 27.3L13.32 70.0L60.68 70.0L74.0 27.3Z" stroke="#323232" stroke-width="2.0" stroke-dasharray="none" opacity="1.0" fill="#ffffff"/></g><g id="ProcessOnG1019" transform="matrix(1.0,0.0,0.0,1.0,935.5999908447266,200.31562042236328)" opacity="1.0"><path id="ProcessOnPath1020" d="M0.0 15.333333333333334L15.333333333333334 0.0L76.66666666666667 0.0L92.0 15.333333333333334L92.0 166.2843780517578L0.0 166.2843780517578L0.0 15.333333333333334Z" stroke="#323232" stroke-width="2.0" stroke-dasharray="none" opacity="1.0" fill="#ffffff"/><g id="ProcessOnG1021" transform="matrix(1.0,0.0,0.0,1.0,10.0,75.0171890258789)"><text id="ProcessOnText1022" fill="#000000" font-size="13" x="35.0" y="13.325" font-family="微软雅黑" font-weight="normal" font-style="normal" text-decoration="none" family="微软雅黑" text-anchor="middle" size="13">空气散热器</text></g></g><g id="ProcessOnG1023" transform="matrix(1.0,0.0,0.0,1.0,733.5999908447266,193.5999984741211)" opacity="1.0"><path id="ProcessOnPath1024" d="M0.0 4.0Q0.0 0.0 4.0 0.0L96.0 0.0Q100.0 0.0 100.0 4.0L100.0 66.0Q100.0 70.0 96.0 70.0L4.0 70.0Q0.0 70.0 0.0 66.0Z" stroke="#323232" stroke-width="2.0" stroke-dasharray="none" opacity="1.0" fill="#ffffff"/><g id="ProcessOnG1025" transform="matrix(1.0,0.0,0.0,1.0,10.0,26.875)"><text id="ProcessOnText1026" fill="#000000" font-size="13" x="39.0" y="13.325" font-family="微软雅黑" font-weight="normal" font-style="normal" text-decoration="none" family="微软雅黑" text-anchor="middle" size="13">蒸汽轮机</text></g></g><g id="ProcessOnG1027"><path id="ProcessOnPath1028" d="M661.0 228.33333206176758L693.0 228.33333206176758L693.0 228.33333206176758L709.7639320225002 228.33333206176758" stroke="#323232" stroke-width="2.0" stroke-dasharray="none" fill="none" marker-end="url(#ProcessOnMarker1029)"/></g><g id="ProcessOnG1031"><path id="ProcessOnPath1032" d="M833.5999908447266 221.20000076293945L885.0923802409101 221.20000076293945L885.0923802409101 221.54862373393007L921.3487016595938 221.54862373393007" stroke="#323232" stroke-width="2.0" stroke-dasharray="none" fill="none" marker-end="url(#ProcessOnMarker1033)"/></g><g id="ProcessOnG1035"><path id="ProcessOnPath1036" d="M935.5999908447266 344.20000076293945L802.0999908447266 344.20000076293945L802.0999908447266 344.20000076293945L683.8360588222264 344.20000076293945" stroke="#323232" stroke-width="2.0" stroke-dasharray="none" fill="none" marker-end="url(#ProcessOnMarker1037)"/></g><g id="ProcessOnG1039" transform="matrix(1.0,0.0,0.0,1.0,763.5999908447266,344.1988639831543)" opacity="1.0"><path id="ProcessOnPath1040" d="M0.0 0.0L58.039215087890625 0.0L58.039215087890625 31.001136779785156L0.0 31.001136779785156Z" stroke="none" stroke-width="0.0" stroke-dasharray="none" opacity="1.0" fill="none"/><g id="ProcessOnG1041" transform="matrix(1.0,0.0,0.0,1.0,0.0,7.375568389892578)"><text id="hanlfHost:ai1" fill="#000000" font-size="13" x="28.019607543945312" y="13.325" font-family="微软雅黑" font-weight="normal" font-style="normal" text-decoration="none" family="微软雅黑" text-anchor="middle" size="13">32.5</text></g></g><g id="ProcessOnG1043" transform="matrix(1.0,0.0,0.0,1.0,717.5999908447266,344.1988639831543)" opacity="1.0"><path id="ProcessOnPath1044" d="M0.0 0.0L58.039215087890625 0.0L58.039215087890625 31.001136779785156L0.0 31.001136779785156Z" stroke="none" stroke-width="0.0" stroke-dasharray="none" opacity="1.0" fill="none"/><g id="ProcessOnG1045" transform="matrix(1.0,0.0,0.0,1.0,0.0,7.375568389892578)"><text id="ProcessOnText1046" fill="#000000" font-size="13" x="28.019607543945312" y="13.325" font-family="微软雅黑" font-weight="normal" font-style="normal" text-decoration="none" family="微软雅黑" text-anchor="middle" size="13">流量</text></g></g><g id="ProcessOnG1047" transform="matrix(1.0,0.0,0.0,1.0,981.5999908447266,169.31448364257812)" opacity="1.0"><path id="ProcessOnPath1048" d="M0.0 0.0L58.039215087890625 0.0L58.039215087890625 31.001136779785156L0.0 31.001136779785156Z" stroke="none" stroke-width="0.0" stroke-dasharray="none" opacity="1.0" fill="none"/><g id="ProcessOnG1049" transform="matrix(1.0,0.0,0.0,1.0,0.0,7.375568389892578)"><text id="ProcessOnText1050" fill="#000000" font-size="13" x="28.019607543945312" y="13.325" font-family="微软雅黑" font-weight="normal" font-style="normal" text-decoration="none" family="微软雅黑" text-anchor="middle" size="13">32.1</text></g></g><g id="ProcessOnG1051" transform="matrix(1.0,0.0,0.0,1.0,935.5999908447266,169.31448364257812)" opacity="1.0"><path id="ProcessOnPath1052" d="M0.0 0.0L58.039215087890625 0.0L58.039215087890625 31.001136779785156L0.0 31.001136779785156Z" stroke="none" stroke-width="0.0" stroke-dasharray="none" opacity="1.0" fill="none"/><g id="ProcessOnG1053" transform="matrix(1.0,0.0,0.0,1.0,0.0,7.375568389892578)"><text id="ProcessOnText1054" fill="#000000" font-size="13" x="28.019607543945312" y="13.325" font-family="微软雅黑" font-weight="normal" font-style="normal" text-decoration="none" family="微软雅黑" text-anchor="middle" size="13">温度</text></g></g><g id="ProcessOnG1055" transform="matrix(1.0,0.0,0.0,1.0,777.5803833007812,156.31448364257812)" opacity="1.0"><path id="ProcessOnPath1056" d="M0.0 0.0L58.039215087890625 0.0L58.039215087890625 31.001136779785156L0.0 31.001136779785156Z" stroke="none" stroke-width="0.0" stroke-dasharray="none" opacity="1.0" fill="none"/><g id="ProcessOnG1057" transform="matrix(1.0,0.0,0.0,1.0,0.0,7.375568389892578)"><text id="hanlfHost:ai2" fill="#000000" font-size="13" x="28.019607543945312" y="13.325" font-family="微软雅黑" font-weight="normal" font-style="normal" text-decoration="none" family="微软雅黑" text-anchor="middle" size="13">32.2</text></g></g><g id="ProcessOnG1059" transform="matrix(1.0,0.0,0.0,1.0,731.5803833007812,156.31448364257812)" opacity="1.0"><path id="ProcessOnPath1060" d="M0.0 0.0L58.039215087890625 0.0L58.039215087890625 31.001136779785156L0.0 31.001136779785156Z" stroke="none" stroke-width="0.0" stroke-dasharray="none" opacity="1.0" fill="none"/><g id="ProcessOnG1061" transform="matrix(1.0,0.0,0.0,1.0,0.0,7.375568389892578)"><text id="ProcessOnText1062" fill="#000000" font-size="13" x="28.019607543945312" y="13.325" font-family="微软雅黑" font-weight="normal" font-style="normal" text-decoration="none" family="微软雅黑" text-anchor="middle" size="13">功率</text></g></g></g></g></svg>
+                        
+                </div>
+                
+                <!-- /.col-lg-4 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+      <script src="js/angular.min.js"></script> 
+
+      <!-- jQuery -->
+      <script src="/vendor/jquery/jquery.min.js"></script>
+
+      <!-- Bootstrap Core JavaScript -->
+      <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+      
+      <script src="/vendor/datatables/js/jquery.dataTables.min.js"></script>
+      <script src="/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+      <script src="/vendor/datatables-responsive/dataTables.responsive.js"></script>
+  
+      <!-- Metis Menu Plugin JavaScript -->
+      <script src="/vendor/metisMenu/metisMenu.min.js"></script>
+  
+      <!-- Morris Charts JavaScript -->
+      <script src="/vendor/raphael/raphael.min.js"></script>
+      <script src="/vendor/morrisjs/morris.min.js"></script>
+      <script src="/data/morris-data.js"></script>
+     
+      <!-- Custom Theme JavaScript -->
+      <script src="/dist/js/sb-admin-2.js"></script>
+      <script src="js/angular-route.js"></script>
+     
+      <script>           
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function($scope, $http) {   
+        var myUrl_deviceSystem = "http://localhost:3000/data/device_system?callback=JSON_CALLBACK";
+        $http.jsonp(myUrl_deviceSystem).success(function(response){
+            var systemList = [];
+            response.forEach(function(responseE){
+                systemList.push(responseE)
+            })
+            $scope.systemList = systemList;
+        })         
+       
+        var dom = document.getElementById("container");
+        var myChart = echarts.init(dom);
+        var app = {};
+
+     function randomData() {
+    now = new Date(+now + oneDay);
+    value = value + Math.random() * 21 - 10;
+    return {
+        name: now.toString(),
+        value: [
+            [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'),
+            Math.round(value)
+        ]
+    }
+}
+
+var data = [];
+var now = +new Date(1997, 9, 3);
+var oneDay = 24 * 3600 * 1000;
+var value = Math.random() * 1000;
+for (var i = 0; i < 1000; i++) {
+    data.push(randomData());
+}
+
+option = {
+    title: {
+        text: '动态数据 + 时间坐标轴'
+    },
+    tooltip: {
+        trigger: 'axis',
+        formatter: function (params) {
+            params = params[0];
+            var date = new Date(params.name);
+            return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + params.value[1];
+        },
+        axisPointer: {
+            animation: false
+        }
+    },
+    xAxis: {
+        type: 'time',
+        splitLine: {
+            show: false
+        }
+    },
+    yAxis: {
+        type: 'value',
+        boundaryGap: [0, '100%'],
+        splitLine: {
+            show: false
+        }
+    },
+    series: [{
+        name: '模拟数据',
+        type: 'line',
+        showSymbol: false,
+        hoverAnimation: false,
+        data: data
+    }]
+};
+
+setInterval(function () {
+
+    for (var i = 0; i < 5; i++) {
+        data.shift();
+        data.push(randomData());
+    }
+
+    myChart.setOption({
+        series: [{
+            data: data
+        }]
+    });
+}, 1000);
+
+        if (option && typeof option === "object") {
+        myChart.setOption(option, true);
+        };});      
+    </script>  
+
+<script>
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+            responsive: true
+        });
+    });
+</script>
+
+</body>
+
+</html>
