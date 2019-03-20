@@ -22,7 +22,13 @@ router.get('/signalSearch', function(req, res, next) {
 router.get('/signalPaint', function(req, res, next) {
   res.render('signalPaint', { title: 'TMSR-核能管理系统' });
 });
+router.get('/userAdmin', function(req, res, next) {
+  res.render('userAdmin', { title: 'TMSR-核能管理系统' });
+});
 
+router.get('/rootAdmin', function(req, res, next) {
+  res.render('rootAdmin', { title: 'TMSR-核能管理系统' });
+});
 
 
 router.get('/lf1_primary', function(req, res, next) {

@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>TMSR Documents - 熔盐泵实验平台文档管理系统</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <link href="/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="/vendor/morrisjs/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+        .a:hover {
+            color: blue;
+        }
+    </style>
+
+
+</head>
+
+<body ng-app="myApp" ng-controller="deviceOverviewCtrl">
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="">TMSR Documents v2.0</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-tasks fa-fw"></i>
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-tasks">
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong> 堆物理</strong>
+                                        <span class="pull-right text-muted">100% Complete</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+                                            style="width: 100%">
+                                            <span class="sr-only">100% Complete (success)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong>安全分析</strong>
+                                        <span class="pull-right text-muted">20% Complete</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                                            <span class="sr-only">20% Complete</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong>堆本体</strong>
+                                        <span class="pull-right text-muted">60% Complete</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+                                            style="width: 60%">
+                                            <span class="sr-only">60% Complete (warning)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong>熔盐回路</strong>
+                                        <span class="pull-right text-muted">80% Complete</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
+                                            style="width: 80%">
+                                            <span class="sr-only">80% Complete (danger)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a class="text-center" href="#">
+                                <strong>See All Tasks</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-tasks -->
+                </li>
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-bell fa-fw"></i>
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-alerts">
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-comment fa-fw"></i> New Comment
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                    <span class="pull-right text-muted small">12 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-envelope fa-fw"></i> Message Sent
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-tasks fa-fw"></i> New Task
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a class="text-center" href="#">
+                                <strong>See All Alerts</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-alerts -->
+                </li>
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-gear fa-fw"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="login.html">
+                                <i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-edit fa-fw"></i>文件管理
+                                <span class="fa arrow"></span>
+                            </a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/">文件概览</a>
+                                </li>
+                                <li>
+                                    <a href=" /lfcontact">工作联系单</a>
+                                </li>
+                                <li>
+                                    <a href="/lf1_note">技术通知单</a>
+                                </li>
+                                <li>
+                                    <a href=" /lf1_concept_design">概念设计文件</a>
+                                </li>
+                                <li>
+                                    <a href=" /lf1_scheme_design">方案设计文件</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="/lf1_primary">
+                                <i class="fa fa-wrench fa-fw"></i>初步设计文件
+                                <span class="fa arrow"></span>
+                            </a>
+                            <ul class="nav nav-second-level">
+                                <li ng-repeat="x in systems">
+                                    <a href="/proto/{{x}}">{{x}}</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-wrench fa-fw"></i>施工图设计文件
+                                <span class="fa arrow"></span>
+                            </a>
+                            <ul class="nav nav-second-level">
+                                <li ng-repeat="x in systems">
+                                    <a href="/const/{{x}}">{{x}}</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="/">
+                                <i class="fa fa-dashboard fa-fw"></i>设备管理
+                                <span class="fa arrow"></span>
+                            </a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/deviceOverview">超高温熔盐泵测试装置</a>
+                                </li>
+                                <li ng-repeat="y in systemList">
+                                    <a href="/system/{{y.system_id}}">{{y.system_name}}</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="/">
+                                <i class="fa fa-dashboard fa-fw"></i>动态信息管理
+                                <span class="fa arrow"></span>
+                            </a>
+                            <ul class="nav nav-second-level">
+                                <!-- <li>
+                                            <a href="/deviceOverview">超高温熔盐泵测试装置</a>
+                                        </li> -->
+                                <!-- <li ng-repeat="y in systemList">
+                                           <a href="/system/{{y.system_id}}">{{y.system_name}}</a>
+                                        </li> -->
+                                <li>
+                                    <a href="/signalSearch">动态信息查询</a>
+                                </li>
+                                <li>
+                                    <a href="/signalPaint">动态信息绘图</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                                <a href="/">
+                                    <i class="fa fa-bar-chart-o fa-fw"></i>个人中心
+                                    <span class="fa arrow"></span>
+                                </a>
+                                        <ul class="nav nav-second-level">
+                                            <li>
+                                                <a href="/userAdmin">用户管理</a>
+                                            </li>
+                                            <li>
+                                                <a href="/rootAdmin">权限管理</a>
+                                            </li>
+    
+                                        </ul>
+                            </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">实验平台 用户信息管理</h1>
+                </div>
+                <!-- /.row -->
+                <!-- /.panel -->
+                <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> 用户列表
+                            <!-- <div class="pull-right">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                        Actions
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right" role="menu">
+                                        <li><a href="#">Action</a>
+                                        </li>
+                                        <li><a href="#">Another action</a>
+                                        </li>
+                                        <li><a href="#">Something else here</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li><a href="#">Separated link</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div> -->
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <button style="float:right">新增</button>
+                                    <div class="table-responsive">
+                                        <table id="example" width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                            <thead>
+                                                <tr>
+                                                    <th>序号</th>
+                                                    <th>用户ID</th>
+                                                    <th>用户名</th>
+                                                    <th>用户密码</th>
+                                                    <th>用户邮箱</th>
+                                                    <th>角色</th>
+                                                    <th>操作</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                    <!-- /.table-responsive -->
+                                </div>
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+
+                    <!-- /.panel -->
+                </div>
+
+                <!-- /.col-lg-4 -->
+
+                <!-- /.row -->
+            </div>
+            <!-- /#page-wrapper -->
+
+        </div>
+        <!-- /#wrapper -->
+
+        <!-- jQuery -->
+        <script src="/vendor/jquery/jquery.min.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+        <script src="/vendor/datatables/js/jquery.dataTables.min.js"></script>
+        <script src="/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+        <script src="/vendor/datatables-responsive/dataTables.responsive.js"></script>
+
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="/vendor/metisMenu/metisMenu.min.js"></script>
+
+        <!-- Morris Charts JavaScript -->
+        <script src="/vendor/raphael/raphael.min.js"></script>
+        <script src="/vendor/morrisjs/morris.min.js"></script>
+        <script src="/data/morris-data.js"></script>
+        <script src="/vendor/echarts.min.js"></script>
+
+
+
+        <!-- Custom Theme JavaScript -->
+        <script src="/dist/js/sb-admin-2.js"></script>
+
+        <script src="js/angular.min.js"></script>
+        <script>       
+            var app = angular.module('myApp', []);
+            app.controller('deviceOverviewCtrl', function ($scope, $http) {
+               
+                var myUrl_deviceSystem = "http://localhost:3000/data/device_system?callback=JSON_CALLBACK";
+                $http.jsonp(myUrl_deviceSystem).success(function (response) {
+                    var systemList = [];
+                    response.forEach(function (responseE) {
+                        systemList.push(responseE)
+                    })
+                    $scope.systemList = systemList;
+                })
+                // var myUrl_deviceList = "http://localhost:3000/data/device_list?callback=JSON_CALLBACK";
+
+                // $http.jsonp(myUrl_deviceList).success(function (response) {
+                //     var deviceList = [];
+                //     response.forEach(function (responseE) {
+                //         deviceList.push(responseE)
+                //     });
+               
+                    var data = new Array();
+                    var signalList = [{index:0,userId:2019032001,userName:"zhangliyuan",userPassword:"888888",userEmail:"zhangliyuan@sinap.ac.cn",userRole:"管理员",userOperarion:"修改"},
+                    {index:1,userId:2019032002,userName:"hanlifeng",userPassword:"888888",userEmail:"hanlifeng@sinap.ac.cn",userRole:"管理员",userOperarion:"修改"},
+                    {index:2,userId:2019032003,userName:"wulimei",userPassword:"888888",userEmail:"zhangliyuan@sinap.ac.cn",userRole:"工作人员",userOperarion:"修改"},
+                    {index:3,userId:2019032004,userName:"lijiazeng",userPassword:"888888",userEmail:"lijiazeng@sinap.ac.cn",userRole:"工作人员",userOperarion:"修改"},
+                    {index:4,userId:2019032005,userName:"liguohui",userPassword:"888888",userEmail:"liguohui@sinap.ac.cn",userRole:"普通用户",userOperarion:"修改"},
+                    
+
+                   ]
+                    signalList.forEach(function (list) {
+                        data.push([list.index, list.userId, list.userName,list.userPassword,list.userEmail,list.userRole ]);
+                    });
+                  
+                    $('#example').DataTable({
+
+                        // "paging":   false,
+                        // "ordering": false,
+                        "info": true,
+                        "language": {
+                            "lengthMenu": "每页 _MENU_ 条记录",
+                            "zeroRecords": "没有找到记录",
+                            "info": "第 _PAGE_ 页 ( 总共 _PAGES_ 页 )",
+                            "infoEmpty": "无记录",
+                            "infoFiltered": "(从 _MAX_ 条记录过滤)",
+                            "search": "检索",
+
+                            "paginate": {
+                                "first": "第一页",
+                                "previous": "上一页",
+                                "next": "下一页",
+                                "last": "最后一页"
+                            }
+                        },
+                        "alterOpt": function alterOpt() {alert(1111)},
+
+                        "data": data,
+                        "columnDefs": [
+                        {
+                            // The `data` parameter refers to the data for the cell (defined by the
+                            // `data` option, which defaults to the column being worked with, in
+                            // this case `data: 0`.
+                            "render": function (data, type, row) {
+                                // return data +' ('+ row[3]+')';
+                                return '<button onclick="alterOpt()">' + "修改" + '</button>'+'<button href="/">' + "删除" + '</button>';
+                            },
+                            "targets": -1
+                        },
+                        
+                      
+                    ]
+                       
+
+                    });
+                    $(document).ready(function () {
+                        $('#dataTables-example').DataTable({
+                            responsive: true
+                        });
+                    });
+
+                });
+
+
+        </script>
+
+        <script>
+
+        </script>
+
+</body>
+
+</html>
